@@ -9,7 +9,9 @@ jobs:
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
           name: Build container
-          command: docker build -t circleci-docker-primary .
+          command: docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+                                --build-arg VCS_REF=$CIRCLE_SHA1
+                                -t circleci-docker-primary .
       - run:
           name: Release container
           command: |
