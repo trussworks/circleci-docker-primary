@@ -1,15 +1,19 @@
 version: 2
 jobs:
- build:
-   machine: true
-   steps:
-     - checkout
-
-     # login to docker hub
-     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-
-     # build the application container
-     - run: docker build -t trussworks/circleci-docker-primary:$CIRCLE_SHA1 .
-
-     # deploy the container
-     - run: docker push trussworks/circleci-docker-primary:$CIRCLE_SHA1
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Login to Docker Hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Build container
+          command: docker build -t circleci-docker-primary .
+      - run:
+          name: Release container
+          command: |
+            docker tag circleci-docker-primary trussworks/circleci-docker-primary:$CIRCLE_SHA1
+            docker push trussworks/circleci-docker-primary:$CIRCLE_SHA1
+            docker tag circleci-docker-primary trussworks/circleci-docker-primary:$CIRCLE_BRANCH
+            docker push trussworks/circleci-docker-primary:$CIRCLE_BRANCH
