@@ -17,3 +17,8 @@ jobs:
             docker push trussworks/circleci-docker-primary:$CIRCLE_SHA1
             docker tag circleci-docker-primary trussworks/circleci-docker-primary:$CIRCLE_BRANCH
             docker push trussworks/circleci-docker-primary:$CIRCLE_BRANCH
+            # push default tag ("latest") if we're on master
+            if [[ $CIRCLE_BRANCH = master ]]; then
+              docker tag circleci-docker-primary trussworks/circleci-docker-primary
+              docker push trussworks/circleci-docker-primary
+            fi

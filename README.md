@@ -10,6 +10,6 @@ This is [Truss](https://truss.works/)' custom-built docker image for use with Ci
 * [ShellCheck](https://www.shellcheck.net/)
 * [Terraform](https://www.terraform.io/)
 
-For the latest image use `trussworks/circleci-docker-primary:master`.
+For the latest stable image use `trussworks/circleci-docker-primary:master`.
 
-For an immutable tag, see the [Docker Hub](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
+For static tags, we use the git hash. You can get a hash from this repo, from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
