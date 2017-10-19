@@ -2,6 +2,7 @@
 FROM circleci/python:3.6
 
 # Build-time metadata as defined at http://label-schema.org
+ARG BUILD_DATE
 ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name="Truss CircleCI Primary Docker Image" \
