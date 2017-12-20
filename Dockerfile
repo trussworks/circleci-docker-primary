@@ -16,7 +16,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 # install latest aws cli
 RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check awscli
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     awscli
 
 # install latest ecs-deploy
 RUN set -ex && cd ~ \
@@ -27,7 +28,8 @@ RUN set -ex && cd ~ \
 
 # install latest pre-commit
 RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check pre-commit
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     pre-commit==1.4.1
 
 # install latest shellcheck
 RUN set -ex && cd ~ \
