@@ -14,6 +14,13 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
+# install Go
+RUN set -ex && cd ~ \
+  && curl -LO https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz \
+  && sudo tar -C /usr/local -xzf go1.9.3.linux-amd64.tar.gz \
+  && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
+  && rm go1.9.3.linux-amd64.tar.gz
+
 # install latest aws cli
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
