@@ -26,6 +26,13 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install nodejs
 
+# install Yarn
+RUN set -ex && cd ~ \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install yarn
+
 # install Go
 RUN set -ex && cd ~ \
   && curl -LO https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz \
