@@ -14,6 +14,18 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
+# setup apt
+RUN set -ex && cd ~ \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install apt-transport-https lsb-release
+
+# install Node.js
+RUN set -ex && cd ~ \
+  && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
+  && echo "deb https://deb.nodesource.com/node_8.x $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/nodesource.list \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install nodejs
+
 # install Go
 RUN set -ex && cd ~ \
   && curl -LO https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz \
