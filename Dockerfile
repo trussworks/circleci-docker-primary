@@ -45,13 +45,6 @@ RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
      awscli
 
-# install latest ecs-deploy
-RUN set -ex && cd ~ \
-  && cd ~ \
-  && curl -LO https://github.com/silinternational/ecs-deploy/raw/develop/ecs-deploy \
-  && chmod +x ecs-deploy \
-  && sudo mv ecs-deploy /usr/local/bin
-
 # install latest pre-commit
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
