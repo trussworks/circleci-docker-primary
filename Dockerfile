@@ -48,7 +48,7 @@ RUN set -ex && cd ~ \
 # install latest pre-commit
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.8.1
+     pre-commit==1.8.2
 
 # install latest shellcheck
 RUN set -ex && cd ~ \
