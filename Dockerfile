@@ -59,8 +59,8 @@ RUN set -ex && cd ~ \
 
 # install terraform
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/terraform/0.11.5/terraform_0.11.5_linux_amd64.zip \
-  && sudo unzip -d /usr/local/bin terraform_0.11.5_linux_amd64.zip \
-  && rm -f terraform_0.11.5_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/terraform/0.11.6/terraform_0.11.6_linux_amd64.zip \
+  && sudo unzip -d /usr/local/bin terraform_0.11.6_linux_amd64.zip \
+  && rm -f terraform_0.11.6_linux_amd64.zip
 
 CMD ["/bin/sh"]
