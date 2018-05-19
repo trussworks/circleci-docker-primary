@@ -63,4 +63,10 @@ RUN set -ex && cd ~ \
   && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
   && rm -f terraform_0.11.7_linux_amd64.zip
 
+# install terraform-docs
+RUN set -ex && cd ~ \
+  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.3.0/terraform-docs_linux_amd64 \
+  && chmod +x terraform-docs_linux_amd64 \
+  && sudo mv terraform-docs_linux_amd64 /usr/local/bin/terraform-docs
+
 CMD ["/bin/sh"]
