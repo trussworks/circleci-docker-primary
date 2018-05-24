@@ -19,6 +19,35 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install apt-transport-https lsb-release
 
+# install terraform-docs
+RUN set -ex && cd ~ \
+  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.3.0/terraform-docs_linux_amd64 \
+  && chmod +x terraform-docs_linux_amd64 \
+  && sudo mv terraform-docs_linux_amd64 /usr/local/bin/terraform-docs
+
+# install Go
+RUN set -ex && cd ~ \
+  && curl -LO https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz \
+  && sudo tar -C /usr/local -xzf go1.10.2.linux-amd64.tar.gz \
+  && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
+  && rm go1.10.2.linux-amd64.tar.gz
+
+# install terraform
+RUN set -ex && cd ~ \
+  && curl -LO https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip \
+  && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
+  && rm -f terraform_0.11.7_linux_amd64.zip
+
+# install latest aws cli
+RUN set -ex && cd ~ \
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     awscli==1.15.24
+
+# install latest pre-commit
+RUN set -ex && cd ~ \
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     pre-commit==1.9.0
+
 # install Node.js
 RUN set -ex && cd ~ \
   && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
@@ -33,40 +62,11 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn
 
-# install Go
-RUN set -ex && cd ~ \
-  && curl -LO https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz \
-  && sudo tar -C /usr/local -xzf go1.10.2.linux-amd64.tar.gz \
-  && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.10.2.linux-amd64.tar.gz
-
-# install latest aws cli
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.15.24
-
-# install latest pre-commit
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.9.0
-
 # install latest shellcheck
 RUN set -ex && cd ~ \
   && curl -LO https://storage.googleapis.com/shellcheck/shellcheck-latest.linux.x86_64.tar.xz \
   && tar xvfa shellcheck-latest.linux.x86_64.tar.xz \
   && sudo mv shellcheck-latest/shellcheck /usr/local/bin \
   && rm -rf shellcheck-latest shellcheck-latest.linux.x86_64.tar.xz
-
-# install terraform
-RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip \
-  && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
-  && rm -f terraform_0.11.7_linux_amd64.zip
-
-# install terraform-docs
-RUN set -ex && cd ~ \
-  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.3.0/terraform-docs_linux_amd64 \
-  && chmod +x terraform-docs_linux_amd64 \
-  && sudo mv terraform-docs_linux_amd64 /usr/local/bin/terraform-docs
 
 CMD ["/bin/sh"]
