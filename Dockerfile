@@ -51,7 +51,7 @@ RUN set -ex && cd ~ \
 # install Node.js
 RUN set -ex && cd ~ \
   && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
-  && echo "deb https://deb.nodesource.com/node_8.x $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/nodesource.list \
+  && echo "deb https://deb.nodesource.com/node_10.x $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/nodesource.list \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install nodejs
 
