@@ -46,7 +46,7 @@ RUN set -ex && cd ~ \
 # install latest pre-commit
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.9.0
+     pre-commit==1.10.1
 
 # install Node.js
 RUN set -ex && cd ~ \
