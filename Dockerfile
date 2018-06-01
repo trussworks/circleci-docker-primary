@@ -25,6 +25,13 @@ RUN set -ex && cd ~ \
   && chmod +x terraform-docs_linux_amd64 \
   && sudo mv terraform-docs_linux_amd64 /usr/local/bin/terraform-docs
 
+# install shellcheck
+RUN set -ex && cd ~ \
+  && curl -LO https://shellcheck.storage.googleapis.com/shellcheck-v0.5.0.linux.x86_64.tar.xz \
+  && tar xvfa shellcheck-v0.5.0.linux.x86_64.tar.xz \
+  && sudo mv shellcheck-v0.5.0/shellcheck /usr/local/bin \
+  && rm -vrf shellcheck-v0.5.0 shellcheck-v0.5.0.linux.x86_64.tar.xz
+
 # install Go
 RUN set -ex && cd ~ \
   && curl -LO https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz \
@@ -61,12 +68,5 @@ RUN set -ex && cd ~ \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn
-
-# install latest shellcheck
-RUN set -ex && cd ~ \
-  && curl -LO https://storage.googleapis.com/shellcheck/shellcheck-latest.linux.x86_64.tar.xz \
-  && tar xvfa shellcheck-latest.linux.x86_64.tar.xz \
-  && sudo mv shellcheck-latest/shellcheck /usr/local/bin \
-  && rm -rf shellcheck-latest shellcheck-latest.linux.x86_64.tar.xz
 
 CMD ["/bin/sh"]
