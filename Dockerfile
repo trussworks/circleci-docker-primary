@@ -45,15 +45,15 @@ RUN set -ex && cd ~ \
   && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
   && rm -f terraform_0.11.7_linux_amd64.zip
 
-# install latest aws cli
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.15.30
-
 # install latest pre-commit
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
      pre-commit==1.10.2
+
+# install latest aws cli
+RUN set -ex && cd ~ \
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     awscli==1.15.36
 
 # install Node.js
 RUN set -ex && cd ~ \
