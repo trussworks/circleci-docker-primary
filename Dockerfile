@@ -53,7 +53,7 @@ RUN set -ex && cd ~ \
 # install latest aws cli
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.15.36
+     awscli==1.15.50
 
 # install Node.js
 RUN set -ex && cd ~ \
