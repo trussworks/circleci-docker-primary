@@ -45,11 +45,6 @@ RUN set -ex && cd ~ \
   && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
   && rm -f terraform_0.11.7_linux_amd64.zip
 
-# install latest pre-commit
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.10.4
-
 # install latest aws cli
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
@@ -68,5 +63,10 @@ RUN set -ex && cd ~ \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn
+
+# install latest pre-commit
+RUN set -ex && cd ~ \
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     pre-commit==1.10.5
 
 CMD ["/bin/sh"]
