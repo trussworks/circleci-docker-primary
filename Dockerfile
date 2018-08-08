@@ -45,11 +45,6 @@ RUN set -ex && cd ~ \
   && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
   && rm -f terraform_0.11.7_linux_amd64.zip
 
-# install latest aws cli
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.15.50
-
 # install Node.js
 RUN set -ex && cd ~ \
   && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
@@ -63,6 +58,11 @@ RUN set -ex && cd ~ \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn
+
+# install latest aws cli
+RUN set -ex && cd ~ \
+  && sudo pip install --no-cache-dir --disable-pip-version-check \
+     awscli==1.15.73
 
 # install latest pre-commit
 RUN set -ex && cd ~ \
