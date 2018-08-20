@@ -39,6 +39,12 @@ RUN set -ex && cd ~ \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
   && rm go1.10.3.linux-amd64.tar.gz
 
+# install dep
+RUN set -ex && cd ~ \
+  && curl -LO https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 \
+  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = "287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83" ] \
+  && sudo mv dep-linux-amd64 /usr/local/bin
+
 # install terraform
 RUN set -ex && cd ~ \
   && curl -LO https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip \
