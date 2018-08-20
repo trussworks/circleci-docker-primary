@@ -44,7 +44,7 @@ RUN set -ex && cd ~ \
   && curl -LO https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 \
   && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = "287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83" ] \
   && chmod 755 dep-linux-amd64 \
-  && sudo mv dep-linux-amd64 /usr/local/bin
+  && sudo mv dep-linux-amd64 /usr/local/bin/dep
 
 # install terraform
 RUN set -ex && cd ~ \
