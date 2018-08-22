@@ -69,7 +69,7 @@ RUN set -ex && cd ~ \
 # install latest aws cli
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.15.73
+     awscli==1.15.80
 
 # install latest pre-commit
 RUN set -ex && cd ~ \
