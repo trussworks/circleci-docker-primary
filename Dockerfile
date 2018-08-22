@@ -48,9 +48,9 @@ RUN set -ex && cd ~ \
 
 # install terraform
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip \
-  && sudo unzip -d /usr/local/bin terraform_0.11.7_linux_amd64.zip \
-  && rm -f terraform_0.11.7_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip \
+  && sudo unzip -d /usr/local/bin terraform_0.11.8_linux_amd64.zip \
+  && rm -f terraform_0.11.8_linux_amd64.zip
 
 # install Node.js
 RUN set -ex && cd ~ \
