@@ -69,4 +69,9 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn
 
+# install entr
+RUN set -ex && cd ~ \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install entr
+
 CMD ["/bin/sh"]
