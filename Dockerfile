@@ -76,4 +76,9 @@ RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
      pre-commit==1.10.5
 
+# install entr
+RUN set -ex && cd ~ \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install entr
+
 CMD ["/bin/sh"]
