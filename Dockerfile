@@ -46,6 +46,13 @@ RUN set -ex && cd ~ \
   && chmod 755 dep-linux-amd64 \
   && sudo mv dep-linux-amd64 /usr/local/bin/dep
 
+# install go-bindata
+RUN set -ex && cd ~ \
+  && curl -LO https://github.com/kevinburke/go-bindata/releases/download/v3.11.0/go-bindata-linux-amd64 \
+  && [ $(sha256sum go-bindata-linux-amd64 | cut -f1 -d' ') = "fdebe82be2ea9db495c443d38e986cd438d97ec6719b2f69b35001d546da6e46" ] \
+  && chmod 755 go-bindata-linux-amd64 \
+  && sudo mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
+
 # install terraform
 RUN set -ex && cd ~ \
   && curl -LO https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip \
