@@ -6,6 +6,7 @@
 This is [Truss](https://truss.works/)' custom-built docker image for use with CircleCI 2.0 jobs. It includes all the [tools needed to be a primary image](https://circleci.com/docs/2.0/custom-images/#adding-required-and-custom-tools-or-files) as well as the following tools we test and deploy with:
 
 * [AWS Command Line Interface](https://aws.amazon.com/cli/)
+* [go-bindata](https://github.com/kevinburke/go-bindata)
 * [dep](https://golang.github.io/dep/)
 * [pre-commit](http://pre-commit.com/)
 * [ShellCheck](https://www.shellcheck.net/)
