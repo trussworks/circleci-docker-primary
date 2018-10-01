@@ -22,12 +22,14 @@ RUN set -ex && cd ~ \
 # install terraform-docs
 RUN set -ex && cd ~ \
   && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.3.0/terraform-docs_linux_amd64 \
+  && [ $(sha256sum terraform-docs_linux_amd64 | cut -f1 -d' ') = 339c157dfbabc1ad22091b07d5793902611eee6c3c5e95c5fc7c6b55540c542a ] \
   && chmod +x terraform-docs_linux_amd64 \
   && sudo mv terraform-docs_linux_amd64 /usr/local/bin/terraform-docs
 
 # install shellcheck
 RUN set -ex && cd ~ \
   && curl -LO https://shellcheck.storage.googleapis.com/shellcheck-v0.5.0.linux.x86_64.tar.xz \
+  && [ $(sha512sum shellcheck-v0.5.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 475e14bf2705ad4a16d405fa64b94c2eb151a914d5a165ce13e8f9344e6145893f685a650cd32d45a7ab236dedf55f76b31db82e2ef76ad6175a87dd89109790 ] \
   && tar xvfa shellcheck-v0.5.0.linux.x86_64.tar.xz \
   && sudo mv shellcheck-v0.5.0/shellcheck /usr/local/bin \
   && rm -vrf shellcheck-v0.5.0 shellcheck-v0.5.0.linux.x86_64.tar.xz
@@ -35,6 +37,7 @@ RUN set -ex && cd ~ \
 # install Go
 RUN set -ex && cd ~ \
   && curl -LO https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.10.3.linux-amd64.tar.gz | cut -f1 -d' ') = fa1b0e45d3b647c252f51f5e1204aba049cde4af177ef9f2181f43004f901035 ] \
   && sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
   && rm go1.10.3.linux-amd64.tar.gz
@@ -42,20 +45,21 @@ RUN set -ex && cd ~ \
 # install dep
 RUN set -ex && cd ~ \
   && curl -LO https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 \
-  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = "287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83" ] \
+  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = 287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83 ] \
   && chmod 755 dep-linux-amd64 \
   && sudo mv dep-linux-amd64 /usr/local/bin/dep
 
 # install go-bindata
 RUN set -ex && cd ~ \
   && curl -LO https://github.com/kevinburke/go-bindata/releases/download/v3.11.0/go-bindata-linux-amd64 \
-  && [ $(sha256sum go-bindata-linux-amd64 | cut -f1 -d' ') = "fdebe82be2ea9db495c443d38e986cd438d97ec6719b2f69b35001d546da6e46" ] \
+  && [ $(sha256sum go-bindata-linux-amd64 | cut -f1 -d' ') = fdebe82be2ea9db495c443d38e986cd438d97ec6719b2f69b35001d546da6e46 ] \
   && chmod 755 go-bindata-linux-amd64 \
   && sudo mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
 
 # install terraform
 RUN set -ex && cd ~ \
   && curl -LO https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip \
+  && [ $(sha256sum terraform_0.11.8_linux_amd64.zip | cut -f1 -d ' ') = 84ccfb8e13b5fce63051294f787885b76a1fedef6bdbecf51c5e586c9e20c9b7 ] \
   && sudo unzip -d /usr/local/bin terraform_0.11.8_linux_amd64.zip \
   && rm -f terraform_0.11.8_linux_amd64.zip
 
