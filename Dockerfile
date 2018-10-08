@@ -75,7 +75,7 @@ RUN set -ex && cd ~ \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
   && sudo apt-get -qq update \
-  && sudo apt-get -qq -y install yarn
+  && sudo apt-get -qq -y install yarn=1.10.1-1
 
 # install latest aws cli
 RUN set -ex && cd ~ \
