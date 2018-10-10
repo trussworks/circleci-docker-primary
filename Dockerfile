@@ -56,14 +56,14 @@ RUN set -ex && cd ~ \
   && chmod 755 go-bindata-linux-amd64 \
   && sudo mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
 
-# install terraform
+# install Terraform
 RUN set -ex && cd ~ \
   && curl -LO https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip \
   && [ $(sha256sum terraform_0.11.8_linux_amd64.zip | cut -f1 -d ' ') = 84ccfb8e13b5fce63051294f787885b76a1fedef6bdbecf51c5e586c9e20c9b7 ] \
   && sudo unzip -d /usr/local/bin terraform_0.11.8_linux_amd64.zip \
   && rm -f terraform_0.11.8_linux_amd64.zip
 
-# install Node.js
+# install Node
 RUN set -ex && cd ~ \
   && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
   && echo "deb https://deb.nodesource.com/node_10.x $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/nodesource.list \
@@ -77,12 +77,12 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn
 
-# install latest aws cli
+# install awscli
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
      awscli==1.16.30
 
-# install latest pre-commit
+# install pre-commit
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
      pre-commit==1.11.1
