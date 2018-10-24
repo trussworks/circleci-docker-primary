@@ -35,10 +35,10 @@ RUN set -ex && cd ~ \
 
 # install terraform-docs
 RUN set -ex && cd ~ \
-  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.4.5/terraform-docs-v0.4.5-linux-amd64 \
-  && [ $(sha256sum terraform-docs-v0.4.5-linux-amd64 | cut -f1 -d' ') = e5654c1bcc42f722818d574cd777af5d4adb7533301fb646c0a5cef2001158f3 ] \
-  && chmod +x terraform-docs-v0.4.5-linux-amd64 \
-  && sudo mv terraform-docs-v0.4.5-linux-amd64 /usr/local/bin/terraform-docs
+  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.5.0/terraform-docs-v0.5.0-linux-amd64 \
+  && [ $(sha256sum terraform-docs-v0.5.0-linux-amd64 | cut -f1 -d' ') = dbd421c78089fad336afda3d3969abd34e05889bfd24ae91debde16dab5a144a ] \
+  && chmod +x terraform-docs-v0.5.0-linux-amd64 \
+  && sudo mv terraform-docs-v0.5.0-linux-amd64 /usr/local/bin/terraform-docs
 
 # install shellcheck
 RUN set -ex && cd ~ \
