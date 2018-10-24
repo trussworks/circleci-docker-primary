@@ -33,13 +33,6 @@ RUN set -ex && cd ~ \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/lists/*
 
-# install terraform-docs
-RUN set -ex && cd ~ \
-  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.5.0/terraform-docs-v0.5.0-linux-amd64 \
-  && [ $(sha256sum terraform-docs-v0.5.0-linux-amd64 | cut -f1 -d' ') = dbd421c78089fad336afda3d3969abd34e05889bfd24ae91debde16dab5a144a ] \
-  && chmod +x terraform-docs-v0.5.0-linux-amd64 \
-  && sudo mv terraform-docs-v0.5.0-linux-amd64 /usr/local/bin/terraform-docs
-
 # install shellcheck
 RUN set -ex && cd ~ \
   && curl -LO https://shellcheck.storage.googleapis.com/shellcheck-v0.5.0.linux.x86_64.tar.xz \
@@ -76,6 +69,13 @@ RUN set -ex && cd ~ \
   && [ $(sha256sum terraform_0.11.8_linux_amd64.zip | cut -f1 -d ' ') = 84ccfb8e13b5fce63051294f787885b76a1fedef6bdbecf51c5e586c9e20c9b7 ] \
   && sudo unzip -d /usr/local/bin terraform_0.11.8_linux_amd64.zip \
   && rm -f terraform_0.11.8_linux_amd64.zip
+
+# install terraform-docs
+RUN set -ex && cd ~ \
+  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.5.0/terraform-docs-v0.5.0-linux-amd64 \
+  && [ $(sha256sum terraform-docs-v0.5.0-linux-amd64 | cut -f1 -d' ') = dbd421c78089fad336afda3d3969abd34e05889bfd24ae91debde16dab5a144a ] \
+  && chmod +x terraform-docs-v0.5.0-linux-amd64 \
+  && sudo mv terraform-docs-v0.5.0-linux-amd64 /usr/local/bin/terraform-docs
 
 # install awscli
 RUN set -ex && cd ~ \
