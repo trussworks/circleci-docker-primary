@@ -85,6 +85,6 @@ RUN set -ex && cd ~ \
 # install pre-commit
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.11.1
+     pre-commit==1.12.0
 
 CMD ["/bin/sh"]
