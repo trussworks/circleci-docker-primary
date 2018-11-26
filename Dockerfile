@@ -29,7 +29,6 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn \
   && : Cleanup \
-  && sudo apt-get remove --purge --auto-remove -y apt-transport-https lsb-release \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/lists/*
 
