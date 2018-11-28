@@ -17,7 +17,7 @@ This is [Truss](https://truss.works/)' custom-built docker image for use with Ci
 The following languages are also installed:
 
 * Python 3.6.x (container base image)
-* Go 1.10.x
+* Go 1.11.x
 * Node 10.x
 
 For more details and exact versions, see the [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile).

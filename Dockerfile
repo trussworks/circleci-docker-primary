@@ -29,7 +29,6 @@ RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install yarn \
   && : Cleanup \
-  && sudo apt-get remove --purge --auto-remove -y apt-transport-https lsb-release \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/lists/*
 
@@ -43,11 +42,11 @@ RUN set -ex && cd ~ \
 
 # install Go
 RUN set -ex && cd ~ \
-  && curl -LO https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz \
-  && [ $(sha256sum go1.10.3.linux-amd64.tar.gz | cut -f1 -d' ') = fa1b0e45d3b647c252f51f5e1204aba049cde4af177ef9f2181f43004f901035 ] \
-  && sudo tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz \
+  && curl -LO https://dl.google.com/go/go1.11.2.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.11.2.linux-amd64.tar.gz | cut -f1 -d' ') = 1dfe664fa3d8ad714bbd15a36627992effd150ddabd7523931f077b3926d736d ] \
+  && sudo tar -C /usr/local -xzf go1.11.2.linux-amd64.tar.gz \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.10.3.linux-amd64.tar.gz
+  && rm go1.11.2.linux-amd64.tar.gz
 
 # install dep
 RUN set -ex && cd ~ \
