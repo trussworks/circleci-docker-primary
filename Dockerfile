@@ -34,11 +34,11 @@ RUN set -ex && cd ~ \
 
 # install shellcheck
 RUN set -ex && cd ~ \
-  && curl -LO https://shellcheck.storage.googleapis.com/shellcheck-v0.5.0.linux.x86_64.tar.xz \
-  && [ $(sha512sum shellcheck-v0.5.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 475e14bf2705ad4a16d405fa64b94c2eb151a914d5a165ce13e8f9344e6145893f685a650cd32d45a7ab236dedf55f76b31db82e2ef76ad6175a87dd89109790 ] \
-  && tar xvfa shellcheck-v0.5.0.linux.x86_64.tar.xz \
-  && sudo mv shellcheck-v0.5.0/shellcheck /usr/local/bin \
-  && rm -vrf shellcheck-v0.5.0 shellcheck-v0.5.0.linux.x86_64.tar.xz
+  && curl -LO https://shellcheck.storage.googleapis.com/shellcheck-v0.6.0.linux.x86_64.tar.xz \
+  && [ $(sha512sum shellcheck-v0.6.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 8bda5b4656d70de66f5bf01783ecb4aa76c961d86361b5772fbb9f75ee5f8c09a7eccbb2ee1b02ba9eec986c14903d11452f0fbf7473ffc7da53420e5ee8018c ] \
+  && tar xvfa shellcheck-v0.6.0.linux.x86_64.tar.xz \
+  && sudo mv shellcheck-v0.6.0/shellcheck /usr/local/bin \
+  && rm -vrf shellcheck-v0.6.0 shellcheck-v0.6.0.linux.x86_64.tar.xz
 
 # install Go
 RUN set -ex && cd ~ \
