@@ -79,7 +79,7 @@ RUN set -ex && cd ~ \
 # install awscli
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.16.60
+     awscli==1.16.70
 
 # install pre-commit
 RUN set -ex && cd ~ \
