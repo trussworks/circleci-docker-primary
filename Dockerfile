@@ -64,10 +64,10 @@ RUN set -ex && cd ~ \
 
 # install Terraform
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip \
-  && [ $(sha256sum terraform_0.11.10_linux_amd64.zip | cut -f1 -d ' ') = 43543a0e56e31b0952ea3623521917e060f2718ab06fe2b2d506cfaa14d54527 ] \
-  && sudo unzip -d /usr/local/bin terraform_0.11.10_linux_amd64.zip \
-  && rm -f terraform_0.11.10_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip \
+  && [ $(sha256sum terraform_0.11.11_linux_amd64.zip | cut -f1 -d ' ') = 94504f4a67bad612b5c8e3a4b7ce6ca2772b3c1559630dfd71e9c519e3d6149c ] \
+  && sudo unzip -d /usr/local/bin terraform_0.11.11_linux_amd64.zip \
+  && rm -f terraform_0.11.11_linux_amd64.zip
 
 # install terraform-docs
 RUN set -ex && cd ~ \
