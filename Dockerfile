@@ -35,7 +35,7 @@ RUN set -ex && cd ~ \
 # install shellcheck
 RUN set -ex && cd ~ \
   && curl -LO https://shellcheck.storage.googleapis.com/shellcheck-v0.6.0.linux.x86_64.tar.xz \
-  && [ $(sha512sum shellcheck-v0.6.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 8bda5b4656d70de66f5bf01783ecb4aa76c961d86361b5772fbb9f75ee5f8c09a7eccbb2ee1b02ba9eec986c14903d11452f0fbf7473ffc7da53420e5ee8018c ] \
+  && [ $(sha256sum shellcheck-v0.6.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 95c7d6e8320d285a9f026b5241f48f1c02d225a1b08908660e8b84e58e9c7dce ] \
   && tar xvfa shellcheck-v0.6.0.linux.x86_64.tar.xz \
   && sudo mv shellcheck-v0.6.0/shellcheck /usr/local/bin \
   && rm -vrf shellcheck-v0.6.0 shellcheck-v0.6.0.linux.x86_64.tar.xz
