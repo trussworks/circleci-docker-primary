@@ -8,6 +8,7 @@ This is [Truss](https://truss.works/)' custom-built docker image for use with Ci
 * [AWS Command Line Interface](https://aws.amazon.com/cli/)
 * [go-bindata](https://github.com/kevinburke/go-bindata)
 * [dep](https://golang.github.io/dep/)
+* [Packer](https://packer.io/)
 * [pre-commit](http://pre-commit.com/)
 * [ShellCheck](https://www.shellcheck.net/)
 * [Terraform](https://www.terraform.io/)
