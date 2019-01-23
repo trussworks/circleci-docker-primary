@@ -71,10 +71,10 @@ RUN set -ex && cd ~ \
 
 # install terraform-docs
 RUN set -ex && cd ~ \
-  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.5.0/terraform-docs-v0.5.0-linux-amd64 \
-  && [ $(sha256sum terraform-docs-v0.5.0-linux-amd64 | cut -f1 -d' ') = dbd421c78089fad336afda3d3969abd34e05889bfd24ae91debde16dab5a144a ] \
-  && chmod +x terraform-docs-v0.5.0-linux-amd64 \
-  && sudo mv terraform-docs-v0.5.0-linux-amd64 /usr/local/bin/terraform-docs
+  && curl -LO https://github.com/segmentio/terraform-docs/releases/download/v0.6.0/terraform-docs-v0.6.0-linux-amd64 \
+  && [ $(sha256sum terraform-docs-v0.6.0-linux-amd64 | cut -f1 -d' ') = 7863f13b4fa94f7a4cb1eac2751c427c5754ec0da7793f4a34ce5d5d477f7c4f ] \
+  && chmod +x terraform-docs-v0.6.0-linux-amd64 \
+  && sudo mv terraform-docs-v0.6.0-linux-amd64 /usr/local/bin/terraform-docs
 
 # install awscli
 RUN set -ex && cd ~ \
