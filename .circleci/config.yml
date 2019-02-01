@@ -5,25 +5,43 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Check for reserved branch names
+          command: |
+            if [[ $CIRCLE_BRANCH = latest || $CIRCLE_BRANCH = packer ]]; then
+              echo "Don't use a branch named 'latest' or 'packer'; these are meaningful tags."
+              exit 1
+            fi
+      - run:
           name: Login to Docker Hub
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run:
-          name: Build container
+          name: Build container - latest
           command: docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
                                 --build-arg VCS_REF=$CIRCLE_SHA1
-                                -t circleci-docker-primary .
+                                -t trussworks/circleci-docker-primary .
+      - run:
+          name: Build container - packer
+          command: cd packer &&
+                   docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+                                --build-arg VCS_REF=$CIRCLE_SHA1
+                                -t trussworks/circleci-docker-primary:packer .
       - run:
           name: Release container
           command: |
-            docker tag circleci-docker-primary trussworks/circleci-docker-primary:$CIRCLE_SHA1
-            docker push trussworks/circleci-docker-primary:$CIRCLE_SHA1
-            docker tag circleci-docker-primary trussworks/circleci-docker-primary:$CIRCLE_BRANCH
-            docker push trussworks/circleci-docker-primary:$CIRCLE_BRANCH
+            for tag in $CIRCLE_SHA1 $CIRCLE_BRANCH; do
+              # latest
+              docker tag  trussworks/circleci-docker-primary trussworks/circleci-docker-primary:$tag
+              docker push trussworks/circleci-docker-primary:$tag
 
+              # packer
+              docker tag  trussworks/circleci-docker-primary:packer trussworks/circleci-docker-primary:packer-$tag
+              docker push trussworks/circleci-docker-primary:packer-$tag
+            done
+
+            # default tags
             if [[ $CIRCLE_BRANCH = master ]]; then
-              # push default tag
-              docker tag circleci-docker-primary trussworks/circleci-docker-primary
               docker push trussworks/circleci-docker-primary
+              docker push trussworks/circleci-docker-primary:packer
 
               # notify microbadger to update
               # https://microbadger.com/images/trussworks/circleci-docker-primary
