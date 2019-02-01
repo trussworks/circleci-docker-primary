@@ -62,13 +62,6 @@ RUN set -ex && cd ~ \
   && chmod 755 go-bindata-linux-amd64 \
   && sudo mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
 
-# install Packer
-RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip \
-  && [ $(sha256sum packer_1.3.3_linux_amd64.zip | cut -f1 -d ' ') = 2e3ea8f366d676d6572ead7e0c773158dfea0aed9c6a740c669d447bcb48d65f ] \
-  && sudo unzip -d /usr/local/bin packer_1.3.3_linux_amd64.zip \
-  && rm -f packer_1.3.3_linux_amd64.zip
-
 # install Terraform
 RUN set -ex && cd ~ \
   && curl -LO https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip \
