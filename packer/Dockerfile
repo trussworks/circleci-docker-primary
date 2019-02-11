@@ -24,6 +24,6 @@ RUN set -ex && cd ~ \
 # install ansible
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     ansible==2.7.6
+     ansible==2.7.7
 
 CMD ["/bin/sh"]
