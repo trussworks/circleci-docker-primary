@@ -76,14 +76,9 @@ RUN set -ex && cd ~ \
   && chmod +x terraform-docs-v0.6.0-linux-amd64 \
   && sudo mv terraform-docs-v0.6.0-linux-amd64 /usr/local/bin/terraform-docs
 
-# install awscli
+# install pip packages
+ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.16.100
-
-# install pre-commit
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.14.2
+      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check
 
 CMD ["/bin/sh"]
