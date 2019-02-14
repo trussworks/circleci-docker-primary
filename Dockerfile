@@ -79,6 +79,7 @@ RUN set -ex && cd ~ \
 # install pip packages
 ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
-      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check
+      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+      && sudo rm -f /tmp/requirements.txt
 
 CMD ["/bin/sh"]
