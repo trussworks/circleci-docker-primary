@@ -24,7 +24,7 @@ RUN set -ex && cd ~ \
 # install Ansible
 RUN set -ex && cd ~ \
   && sudo pip install --no-cache-dir --disable-pip-version-check \
-     ansible==2.7.7
+     ansible==2.7.8
 
 # install ansible-lint
 RUN set -ex && cd ~ \
