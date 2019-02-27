@@ -25,6 +25,7 @@ The following tools are installed:
 For `packer` tagged images, these additional tools are installed:
 
 * [Ansible](https://pypi.org/project/ansible/)
+* [ansible-lint](https://pypi.org/project/ansible-lint/)
 * [Packer](https://packer.io/)
 
 For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile) and [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile).
