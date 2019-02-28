@@ -8,7 +8,7 @@ This is [Truss](https://truss.works/)' custom-built docker image for use with Ci
 The following languages are installed:
 
 * Python 3.6.x (container base image)
-* Go 1.11.x
+* Go 1.12.x
 * Node 10.x
 
 The following tools are installed:
