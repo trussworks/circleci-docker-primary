@@ -16,10 +16,10 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 # install Packer
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_linux_amd64.zip \
-  && [ $(sha256sum packer_1.3.4_linux_amd64.zip | cut -f1 -d ' ') = 73074f4fa07fe15b5d65a694ee7afae2d1a64f0287e6b40897adee77a7afc552 ] \
-  && sudo unzip -d /usr/local/bin packer_1.3.4_linux_amd64.zip \
-  && rm -f packer_1.3.4_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/packer/1.3.5/packer_1.3.5_linux_amd64.zip \
+  && [ $(sha256sum packer_1.3.5_linux_amd64.zip | cut -f1 -d ' ') = 14922d2bca532ad6ee8e936d5ad0788eba96f773bcdcde8c2dc7c95f830841ec ] \
+  && sudo unzip -d /usr/local/bin packer_1.3.5_linux_amd64.zip \
+  && rm -f packer_1.3.5_linux_amd64.zip
 
 # install Ansible
 RUN set -ex && cd ~ \
