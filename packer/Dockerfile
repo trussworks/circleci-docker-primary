@@ -21,14 +21,10 @@ RUN set -ex && cd ~ \
   && sudo unzip -d /usr/local/bin packer_1.3.5_linux_amd64.zip \
   && rm -f packer_1.3.5_linux_amd64.zip
 
-# install Ansible
+# install Python packages
+ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     ansible==2.7.8
-
-# install ansible-lint
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     ansible-lint==4.1.0
+      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+      && sudo rm -f /tmp/requirements.txt
 
 CMD ["/bin/sh"]
