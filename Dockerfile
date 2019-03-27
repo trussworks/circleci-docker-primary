@@ -50,8 +50,8 @@ RUN set -ex && cd ~ \
 
 # install dep
 RUN set -ex && cd ~ \
-  && curl -LO https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 \
-  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = 287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83 ] \
+  && curl -LO https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64 \
+  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = 7479cca72da0596bb3c23094d363ea32b7336daa5473fa785a2099be28ecd0e3 ] \
   && chmod 755 dep-linux-amd64 \
   && sudo mv dep-linux-amd64 /usr/local/bin/dep
 
