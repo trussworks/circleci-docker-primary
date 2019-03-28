@@ -48,8 +48,7 @@ RUN set -ex && cd ~ \
   && CFLAGS="-DSSH_SOURCE_BASHRC" sudo make install \
   && echo "/usr/local/bin/bash" | sudo tee -a /etc/shells \
   && cd ~ \
-  && rm -rf bash-5.0 \
-  && ls -alh /usr/local/bin/bash
+  && rm -rf bash-5.0
 
 # install shellcheck
 RUN set -ex && cd ~ \
