@@ -1,5 +1,5 @@
 # CircleCI primary docker image to run within
-FROM circleci/python:3.7
+FROM circleci/python:3.7-stretch
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
