@@ -48,13 +48,6 @@ RUN set -ex && cd ~ \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
   && rm go1.12.1.linux-amd64.tar.gz
 
-# install dep
-RUN set -ex && cd ~ \
-  && curl -LO https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64 \
-  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = 7479cca72da0596bb3c23094d363ea32b7336daa5473fa785a2099be28ecd0e3 ] \
-  && chmod 755 dep-linux-amd64 \
-  && sudo mv dep-linux-amd64 /usr/local/bin/dep
-
 # install go-bindata
 RUN set -ex && cd ~ \
   && curl -LO https://github.com/kevinburke/go-bindata/releases/download/v3.11.0/go-bindata-linux-amd64 \
