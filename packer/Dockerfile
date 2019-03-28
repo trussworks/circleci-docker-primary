@@ -16,14 +16,22 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 # install Packer
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_linux_amd64.zip \
-  && [ $(sha256sum packer_1.3.4_linux_amd64.zip | cut -f1 -d ' ') = 73074f4fa07fe15b5d65a694ee7afae2d1a64f0287e6b40897adee77a7afc552 ] \
-  && sudo unzip -d /usr/local/bin packer_1.3.4_linux_amd64.zip \
-  && rm -f packer_1.3.4_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/packer/1.3.5/packer_1.3.5_linux_amd64.zip \
+  && [ $(sha256sum packer_1.3.5_linux_amd64.zip | cut -f1 -d ' ') = 14922d2bca532ad6ee8e936d5ad0788eba96f773bcdcde8c2dc7c95f830841ec ] \
+  && sudo unzip -d /usr/local/bin packer_1.3.5_linux_amd64.zip \
+  && rm -f packer_1.3.5_linux_amd64.zip
 
-# install ansible
+# install inspec
 RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     ansible==2.7.7
+  && curl -LO https://packages.chef.io/files/stable/inspec/3.7.1/ubuntu/18.04/inspec_3.7.1-1_amd64.deb \
+  && [ $(sha256sum inspec_3.7.1-1_amd64.deb | cut -f1 -d ' ') = 1c9ccb80ba39484115d4c1d7e2b1258615e9c56079f86963dee9fb2120b94dc3 ] \
+  && sudo dpkg -i inspec_3.7.1-1_amd64.deb \
+  && rm -f inspec_3.7.1-1_amd64.deb
+
+# install Python packages
+ADD ./requirements.txt /tmp/requirements.txt
+RUN set -ex && cd ~ \
+      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+      && sudo rm -f /tmp/requirements.txt
 
 CMD ["/bin/sh"]

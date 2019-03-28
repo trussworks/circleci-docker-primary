@@ -8,7 +8,7 @@ This is [Truss](https://truss.works/)' custom-built docker image for use with Ci
 The following languages are installed:
 
 * Python 3.6.x (container base image)
-* Go 1.11.x
+* Go 1.12.x
 * Node 10.x
 
 The following tools are installed:
@@ -25,6 +25,7 @@ The following tools are installed:
 For `packer` tagged images, these additional tools are installed:
 
 * [Ansible](https://pypi.org/project/ansible/)
+* [ansible-lint](https://pypi.org/project/ansible-lint/)
 * [Packer](https://packer.io/)
 
 For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile) and [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile).

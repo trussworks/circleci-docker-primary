@@ -1,5 +1,5 @@
 # CircleCI primary docker image to run within
-FROM circleci/python:3.6-stretch
+FROM circleci/python:3.7-stretch
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -61,16 +61,16 @@ RUN set -ex && cd ~ \
 
 # install Go
 RUN set -ex && cd ~ \
-  && curl -sSLO https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz \
-  && [ $(sha256sum go1.11.5.linux-amd64.tar.gz | cut -f1 -d' ') = ff54aafedff961eb94792487e827515da683d61a5f9482f668008832631e5d25 ] \
-  && sudo tar -C /usr/local -xzf go1.11.5.linux-amd64.tar.gz \
+  && curl -sSLO https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.12.1.linux-amd64.tar.gz | cut -f1 -d' ') = 2a3fdabf665496a0db5f41ec6af7a9b15a49fbe71a85a50ca38b1f13a103aeec ] \
+  && sudo tar -C /usr/local -xzf go1.12.1.linux-amd64.tar.gz \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.11.5.linux-amd64.tar.gz
+  && rm go1.12.1.linux-amd64.tar.gz
 
 # install dep
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 \
-  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = 287b08291e14f1fae8ba44374b26a2b12eb941af3497ed0ca649253e21ba2f83 ] \
+  && curl -sSLO https://github.com/golang/dep/releases/download/v0.5.1/dep-linux-amd64 \
+  && [ $(sha256sum dep-linux-amd64 | cut -f1 -d' ') = 7479cca72da0596bb3c23094d363ea32b7336daa5473fa785a2099be28ecd0e3 ] \
   && chmod 755 dep-linux-amd64 \
   && sudo mv dep-linux-amd64 /usr/local/bin/dep
 
@@ -83,10 +83,10 @@ RUN set -ex && cd ~ \
 
 # install Terraform
 RUN set -ex && cd ~ \
-  && curl -sSLO https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip \
-  && [ $(sha256sum terraform_0.11.11_linux_amd64.zip | cut -f1 -d ' ') = 94504f4a67bad612b5c8e3a4b7ce6ca2772b3c1559630dfd71e9c519e3d6149c ] \
-  && sudo unzip -d /usr/local/bin terraform_0.11.11_linux_amd64.zip \
-  && rm -f terraform_0.11.11_linux_amd64.zip
+  && curl -sSLO https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip \
+  && [ $(sha256sum terraform_0.11.13_linux_amd64.zip | cut -f1 -d ' ') = 5925cd4d81e7d8f42a0054df2aafd66e2ab7408dbed2bd748f0022cfe592f8d2 ] \
+  && sudo unzip -d /usr/local/bin terraform_0.11.13_linux_amd64.zip \
+  && rm -f terraform_0.11.13_linux_amd64.zip
 
 # install terraform-docs
 RUN set -ex && cd ~ \
@@ -95,14 +95,10 @@ RUN set -ex && cd ~ \
   && chmod +x terraform-docs-v0.6.0-linux-amd64 \
   && sudo mv terraform-docs-v0.6.0-linux-amd64 /usr/local/bin/terraform-docs
 
-# install awscli
+# install pip packages
+ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     awscli==1.16.100
-
-# install pre-commit
-RUN set -ex && cd ~ \
-  && sudo pip install --no-cache-dir --disable-pip-version-check \
-     pre-commit==1.14.2
+      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+      && sudo rm -f /tmp/requirements.txt
 
 CMD ["/bin/sh"]
