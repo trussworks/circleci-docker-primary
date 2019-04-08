@@ -42,11 +42,11 @@ RUN set -ex && cd ~ \
 
 # install Go
 RUN set -ex && cd ~ \
-  && curl -sSLO https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz \
-  && [ $(sha256sum go1.12.1.linux-amd64.tar.gz | cut -f1 -d' ') = 2a3fdabf665496a0db5f41ec6af7a9b15a49fbe71a85a50ca38b1f13a103aeec ] \
-  && sudo tar -C /usr/local -xzf go1.12.1.linux-amd64.tar.gz \
+  && curl -sSLO https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.12.2.linux-amd64.tar.gz | cut -f1 -d' ') = f28c1fde8f293cc5c83ae8de76373cf76ae9306909564f54e0edcf140ce8fe3f ] \
+  && sudo tar -C /usr/local -xzf go1.12.2.linux-amd64.tar.gz \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.12.1.linux-amd64.tar.gz
+  && rm go1.12.2.linux-amd64.tar.gz
 
 # install dep
 RUN set -ex && cd ~ \
