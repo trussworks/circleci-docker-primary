@@ -15,7 +15,6 @@ The following tools are installed:
 
 * [AWS Command Line Interface](https://aws.amazon.com/cli/)
 * [go-bindata](https://github.com/kevinburke/go-bindata)
-* [dep](https://golang.github.io/dep/)
 * [pre-commit](http://pre-commit.com/)
 * [ShellCheck](https://www.shellcheck.net/)
 * [Terraform](https://www.terraform.io/)
