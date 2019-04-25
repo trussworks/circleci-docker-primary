@@ -42,11 +42,11 @@ RUN set -ex && cd ~ \
 
 # install Go
 RUN set -ex && cd ~ \
-  && curl -sSLO https://dl.google.com/go/go1.12.2.linux-amd64.tar.gz \
-  && [ $(sha256sum go1.12.2.linux-amd64.tar.gz | cut -f1 -d' ') = f28c1fde8f293cc5c83ae8de76373cf76ae9306909564f54e0edcf140ce8fe3f ] \
-  && sudo tar -C /usr/local -xzf go1.12.2.linux-amd64.tar.gz \
+  && curl -sSLO https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.12.4.linux-amd64.tar.gz | cut -f1 -d' ') = d7d1f1f88ddfe55840712dc1747f37a790cbcaa448f6c9cf51bbe10aa65442f5 ] \
+  && sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.12.2.linux-amd64.tar.gz
+  && rm go1.12.4.linux-amd64.tar.gz
 
 # install go-bindata
 RUN set -ex && cd ~ \
