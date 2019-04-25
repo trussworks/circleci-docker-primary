@@ -66,13 +66,23 @@ RUN set -ex && cd ~ \
 RUN set -ex && cd ~ \
   && curl -sSLO https://github.com/segmentio/terraform-docs/releases/download/v0.6.0/terraform-docs-v0.6.0-linux-amd64 \
   && [ $(sha256sum terraform-docs-v0.6.0-linux-amd64 | cut -f1 -d' ') = 7863f13b4fa94f7a4cb1eac2751c427c5754ec0da7793f4a34ce5d5d477f7c4f ] \
-  && chmod +x terraform-docs-v0.6.0-linux-amd64 \
+  && chmod 755 terraform-docs-v0.6.0-linux-amd64 \
   && sudo mv terraform-docs-v0.6.0-linux-amd64 /usr/local/bin/terraform-docs
 
 # install pip packages
 ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
-      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
-      && sudo rm -f /tmp/requirements.txt
+  && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+  && sudo rm -f /tmp/requirements.txt
+
+# install CircleCI CLI
+RUN set -ex && cd ~ \
+  && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5546/circleci-cli_0.1.5546_linux_amd64.tar.gz \
+  && [ $(sha256sum circleci-cli_0.1.5546_linux_amd64.tar.gz | cut -f1 -d' ') = d82ebd29d6c914a280450aa1e434f35db0465c0a02b98d7c0fba2040287cbc1b ] \
+  && tar xzf circleci-cli_0.1.5546_linux_amd64.tar.gz \
+  && sudo mv circleci-cli_0.1.5546_linux_amd64/circleci /usr/local/bin \
+  && chmod 755 /usr/local/bin/circleci \
+  && rm -rf circleci-cli_0.1.5546_linux_amd64 circleci-cli_0.1.5546_linux_amd64.tar.gz \
+
 
 CMD ["/bin/sh"]
