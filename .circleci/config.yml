@@ -43,7 +43,7 @@ jobs:
               docker push trussworks/circleci-docker-primary
               docker push trussworks/circleci-docker-primary:packer
 
-              # notify microbadger to update
+              # notify microbadger to update but don't fail if it isn't reachable
               # https://microbadger.com/images/trussworks/circleci-docker-primary
-              curl -X POST $MICROBADGER_WEBHOOK
+              curl -X POST $MICROBADGER_WEBHOOK || true
             fi
