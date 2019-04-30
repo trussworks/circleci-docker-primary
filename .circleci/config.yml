@@ -42,8 +42,4 @@ jobs:
             if [[ $CIRCLE_BRANCH = master ]]; then
               docker push trussworks/circleci-docker-primary
               docker push trussworks/circleci-docker-primary:packer
-
-              # notify microbadger to update
-              # https://microbadger.com/images/trussworks/circleci-docker-primary
-              curl -X POST $MICROBADGER_WEBHOOK
             fi

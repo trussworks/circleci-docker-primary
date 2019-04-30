@@ -34,4 +34,4 @@ For the latest stable images:
 * `trussworks/circleci-docker-primary:master`
 * `trussworks/circleci-docker-primary:packer`
 
-For static tags, use tags including the git hash. You can find the hashes in this repo, from the [MicroBadger page](https://microbadger.com/images/trussworks/circleci-docker-primary), from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
+For static tags, use tags including the git hash. You can find the hashes in this repo, from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
