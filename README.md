@@ -1,7 +1,6 @@
 # Truss CircleCI Primary Docker Image
 
 [![Build status](https://img.shields.io/circleci/project/github/trussworks/circleci-docker-primary/master.svg)](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master)
-[![Version](https://images.microbadger.com/badges/version/trussworks/circleci-docker-primary.svg)](https://microbadger.com/images/trussworks/circleci-docker-primary)
 
 This is [Truss](https://truss.works/)' custom-built docker image for use with CircleCI 2.x jobs. It includes all the [tools needed to be a primary image](https://circleci.com/docs/2.0/custom-images/#adding-required-and-custom-tools-or-files) as well as additional tools we test and deploy with.
 
@@ -34,4 +33,4 @@ For the latest stable images:
 * `trussworks/circleci-docker-primary:master`
 * `trussworks/circleci-docker-primary:packer`
 
-For static tags, use tags including the git hash. You can find the hashes in this repo, from the [MicroBadger page](https://microbadger.com/images/trussworks/circleci-docker-primary), from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
+For static tags, use tags including the git hash. You can find the hashes in this repo, from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
