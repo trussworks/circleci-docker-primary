@@ -19,6 +19,7 @@ The following tools are installed:
 * [Terraform](https://www.terraform.io/)
 * [terraform-docs](https://github.com/segmentio/terraform-docs)
 * [Yarn](https://yarnpkg.com/)
+* [CircleCI](https://circleci.com/docs/2.0/local-cli/)
 
 For `packer` tagged images, these additional tools are installed:
 
