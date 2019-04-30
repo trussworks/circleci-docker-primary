@@ -44,6 +44,21 @@ RUN set -ex && cd ~ \
   && curl -sSLO https://ftp.gnu.org/gnu/bash/bash-5.0-patches/bash50-002 \
   && [ $(sha256sum bash50-002 | cut -f1 -d' ') = 87e87d3542e598799adb3e7e01c8165bc743e136a400ed0de015845f7ff68707 ] \
   && cat bash50-002 | patch -p0  \
+  && curl -sSLO https://ftp.gnu.org/gnu/bash/bash-5.0-patches/bash50-003 \
+  && [ $(sha256sum bash50-003 | cut -f1 -d' ') = 4eebcdc37b13793a232c5f2f498a5fcbf7da0ecb3da2059391c096db620ec85b ] \
+  && cat bash50-003 | patch -p0  \
+  && curl -sSLO https://ftp.gnu.org/gnu/bash/bash-5.0-patches/bash50-004 \
+  && [ $(sha256sum bash50-004 | cut -f1 -d' ') = 14447ad832add8ecfafdce5384badd933697b559c4688d6b9e3d36ff36c62f08 ] \
+  && cat bash50-004 | patch -p0  \
+  && curl -sSLO https://ftp.gnu.org/gnu/bash/bash-5.0-patches/bash50-005 \
+  && [ $(sha256sum bash50-005 | cut -f1 -d' ') = 5bf54dd9bd2c211d2bfb34a49e2c741f2ed5e338767e9ce9f4d41254bf9f8276 ] \
+  && cat bash50-005 | patch -p0  \
+  && curl -sSLO https://ftp.gnu.org/gnu/bash/bash-5.0-patches/bash50-006 \
+  && [ $(sha256sum bash50-006 | cut -f1 -d' ') = d68529a6ff201b6ff5915318ab12fc16b8a0ebb77fda3308303fcc1e13398420 ] \
+  && cat bash50-006 | patch -p0  \
+  && curl -sSLO https://ftp.gnu.org/gnu/bash/bash-5.0-patches/bash50-007 \
+  && [ $(sha256sum bash50-007 | cut -f1 -d' ') = 17b41e7ee3673d8887dd25992417a398677533ab8827938aa41fad70df19af9b ] \
+  && cat bash50-007 | patch -p0  \
   && CFLAGS="-DSSH_SOURCE_BASHRC" ./configure --prefix=/usr/local \
   && CFLAGS="-DSSH_SOURCE_BASHRC" sudo make install \
   && echo "/usr/local/bin/bash" | sudo tee -a /etc/shells \
