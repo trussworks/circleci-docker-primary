@@ -1,5 +1,5 @@
 # CircleCI primary docker image to run within
-FROM circleci/python:3.7-stretch-node
+FROM circleci/python:3.7-stretch
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -18,6 +18,16 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN set -ex && cd ~ \
   && sudo apt-get -qq update \
   && sudo apt-get -qq -y install apt-transport-https lsb-release \
+  && : Install Node 10.x \
+  && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
+  && echo "deb https://deb.nodesource.com/node_10.x $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/nodesource.list \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install nodejs \
+  && : Install Yarn \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
+  && sudo apt-get -qq update \
+  && sudo apt-get -qq -y install yarn \
   && : Cleanup \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/lists/*
