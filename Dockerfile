@@ -42,11 +42,11 @@ RUN set -ex && cd ~ \
 
 # install Go
 RUN set -ex && cd ~ \
-  && curl -sSLO https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz \
-  && [ $(sha256sum go1.12.4.linux-amd64.tar.gz | cut -f1 -d' ') = d7d1f1f88ddfe55840712dc1747f37a790cbcaa448f6c9cf51bbe10aa65442f5 ] \
-  && sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz \
+  && curl -sSLO https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.12.5.linux-amd64.tar.gz | cut -f1 -d' ') = aea86e3c73495f205929cfebba0d63f1382c8ac59be081b6351681415f4063cf ] \
+  && sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz \
   && sudo ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.12.4.linux-amd64.tar.gz
+  && rm go1.12.5.linux-amd64.tar.gz
 
 # install go-bindata
 RUN set -ex && cd ~ \
@@ -77,12 +77,12 @@ RUN set -ex && cd ~ \
 
 # install CircleCI CLI
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5546/circleci-cli_0.1.5546_linux_amd64.tar.gz \
-  && [ $(sha256sum circleci-cli_0.1.5546_linux_amd64.tar.gz | cut -f1 -d' ') = d82ebd29d6c914a280450aa1e434f35db0465c0a02b98d7c0fba2040287cbc1b ] \
-  && tar xzf circleci-cli_0.1.5546_linux_amd64.tar.gz \
-  && sudo mv circleci-cli_0.1.5546_linux_amd64/circleci /usr/local/bin \
+  && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5607/circleci-cli_0.1.5607_linux_amd64.tar.gz \
+  && [ $(sha256sum circleci-cli_0.1.5607_linux_amd64.tar.gz | cut -f1 -d' ') = 125e711d4e834254fca04a381530ce2f2d7e337e4f4710cd8a4a3283c19a7b9b ] \
+  && tar xzf circleci-cli_0.1.5607_linux_amd64.tar.gz \
+  && sudo mv circleci-cli_0.1.5607_linux_amd64/circleci /usr/local/bin \
   && chmod 755 /usr/local/bin/circleci \
-  && rm -rf circleci-cli_0.1.5546_linux_amd64 circleci-cli_0.1.5546_linux_amd64.tar.gz \
+  && rm -rf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz \
 
 
 CMD ["/bin/sh"]
