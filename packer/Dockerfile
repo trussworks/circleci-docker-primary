@@ -16,10 +16,10 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 # install Packer
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/packer/1.3.5/packer_1.3.5_linux_amd64.zip \
-  && [ $(sha256sum packer_1.3.5_linux_amd64.zip | cut -f1 -d ' ') = 14922d2bca532ad6ee8e936d5ad0788eba96f773bcdcde8c2dc7c95f830841ec ] \
-  && sudo unzip -d /usr/local/bin packer_1.3.5_linux_amd64.zip \
-  && rm -f packer_1.3.5_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/packer/1.4.1/packer_1.4.1_linux_amd64.zip \
+  && [ $(sha256sum packer_1.4.1_linux_amd64.zip | cut -f1 -d ' ') = b713ea79a6fb131e27d65ec3f2227f36932540e71820288c3c5ad770b565ecd7 ] \
+  && sudo unzip -d /usr/local/bin packer_1.4.1_linux_amd64.zip \
+  && rm -f packer_1.4.1_linux_amd64.zip
 
 # install inspec
 RUN set -ex && cd ~ \
