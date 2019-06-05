@@ -1,3 +1,2 @@
-# Homebrew pins awscli to patches divisible by 10
-awscli==1.16.160
+awscli==1.16.170
 pre-commit==1.16.1
