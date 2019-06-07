@@ -1,5 +1,5 @@
 # CircleCI primary docker image to run within
-FROM trussworks/circleci-docker-primary
+FROM trussworks/circleci-docker-primary:base
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -14,24 +14,28 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VCS_REF \
       org.label-schema.schema-version="1.0"
 
+# Base image uses "circleci", to avoid using `sudo` run as root user
+USER root
+
 # install Packer
 RUN set -ex && cd ~ \
   && curl -LO https://releases.hashicorp.com/packer/1.4.1/packer_1.4.1_linux_amd64.zip \
   && [ $(sha256sum packer_1.4.1_linux_amd64.zip | cut -f1 -d ' ') = b713ea79a6fb131e27d65ec3f2227f36932540e71820288c3c5ad770b565ecd7 ] \
-  && sudo unzip -d /usr/local/bin packer_1.4.1_linux_amd64.zip \
+  && unzip -d /usr/local/bin packer_1.4.1_linux_amd64.zip \
   && rm -f packer_1.4.1_linux_amd64.zip
 
 # install inspec
 RUN set -ex && cd ~ \
   && curl -LO https://packages.chef.io/files/stable/inspec/3.7.1/ubuntu/18.04/inspec_3.7.1-1_amd64.deb \
   && [ $(sha256sum inspec_3.7.1-1_amd64.deb | cut -f1 -d ' ') = 1c9ccb80ba39484115d4c1d7e2b1258615e9c56079f86963dee9fb2120b94dc3 ] \
-  && sudo dpkg -i inspec_3.7.1-1_amd64.deb \
+  && dpkg -i inspec_3.7.1-1_amd64.deb \
   && rm -f inspec_3.7.1-1_amd64.deb
 
 # install Python packages
 ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
-      && sudo pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
-      && sudo rm -f /tmp/requirements.txt
+  && pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+  && rm -f /tmp/requirements.txt
 
+USER circleci
 CMD ["/bin/sh"]

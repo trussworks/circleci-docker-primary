@@ -18,13 +18,16 @@ jobs:
           name: Build container - latest
           command: docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
                                 --build-arg VCS_REF=$CIRCLE_SHA1
-                                -t trussworks/circleci-docker-primary .
+                                -t trussworks/circleci-docker-primary
+                                -t trussworks/circleci-docker-primary:base
+                                .
       - run:
           name: Build container - packer
           command: cd packer &&
                    docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
                                 --build-arg VCS_REF=$CIRCLE_SHA1
-                                -t trussworks/circleci-docker-primary:packer .
+                                -t trussworks/circleci-docker-primary:packer
+                                .
       - run:
           name: Release container
           command: |
