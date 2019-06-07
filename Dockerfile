@@ -85,8 +85,7 @@ RUN set -ex && cd ~ \
   && tar xzf circleci-cli_0.1.5607_linux_amd64.tar.gz \
   && mv circleci-cli_0.1.5607_linux_amd64/circleci /usr/local/bin \
   && chmod 755 /usr/local/bin/circleci \
-  && rm -rf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz \
-
+  && rm -rf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz
 
 USER circleci
 CMD ["/bin/sh"]
