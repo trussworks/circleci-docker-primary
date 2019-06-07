@@ -26,10 +26,10 @@ RUN set -ex && cd ~ \
 
 # install inspec
 RUN set -ex && cd ~ \
-  && curl -LO https://packages.chef.io/files/stable/inspec/3.7.1/ubuntu/18.04/inspec_3.7.1-1_amd64.deb \
-  && [ $(sha256sum inspec_3.7.1-1_amd64.deb | cut -f1 -d ' ') = 1c9ccb80ba39484115d4c1d7e2b1258615e9c56079f86963dee9fb2120b94dc3 ] \
-  && dpkg -i inspec_3.7.1-1_amd64.deb \
-  && rm -f inspec_3.7.1-1_amd64.deb
+  && curl -LO https://packages.chef.io/files/stable/inspec/3.9.3/ubuntu/18.04/inspec_3.9.3-1_amd64.deb \
+  && [ $(sha256sum inspec_3.9.3-1_amd64.deb | cut -f1 -d ' ') = 757dd2366a3932adc5fcc9382b30d77de6cc33152585f4c9f94f8918d9d349a7 ] \
+  && dpkg -i inspec_3.9.3-1_amd64.deb \
+  && rm -f inspec_3.9.3-1_amd64.deb
 
 # install Python packages
 ADD ./requirements.txt /tmp/requirements.txt
