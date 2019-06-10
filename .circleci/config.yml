@@ -29,6 +29,10 @@ jobs:
                                 -t trussworks/circleci-docker-primary:packer
                                 .
       - run:
+          name: Test containers
+          command: ./test
+
+      - run:
           name: Release container
           command: |
             for tag in $CIRCLE_SHA1 $CIRCLE_BRANCH; do
