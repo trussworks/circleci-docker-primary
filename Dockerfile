@@ -1,39 +1,7 @@
 # CircleCI primary docker image to run within
 FROM circleci/python:3.7-stretch
-
-# Build-time metadata as defined at http://label-schema.org
-ARG BUILD_DATE
-ARG VCS_REF
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Truss CircleCI Primary Docker Image" \
-      org.label-schema.description="Truss custom-built docker image for CircleCI 2.0 jobs. Includes all tools needed to be a \"primary container\" as well as tools we test and deploy with." \
-      org.label-schema.url="https://truss.works/" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/trussworks/circleci-docker-primary" \
-      org.label-schema.vendor="TrussWorks, Inc." \
-      org.label-schema.version=$VCS_REF \
-      org.label-schema.schema-version="1.0"
-
 # Base image uses "circleci", to avoid using `sudo` run as root user
 USER root
-
-# apt-get all the things
-RUN set -ex && cd ~ \
-  && apt-get -qq update \
-  && apt-get -qq -y install --no-install-recommends apt-transport-https lsb-release \
-  && : Install Node 10.x \
-  && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
-  && echo "deb https://deb.nodesource.com/node_10.x $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/nodesource.list \
-  && apt-get -qq update \
-  && apt-get -qq -y install --no-install-recommends nodejs \
-  && : Install Yarn \
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get -qq update \
-  && apt-get -qq -y install --no-install-recommends yarn \
-  && : Cleanup \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
 
 # install shellcheck
 RUN set -ex && cd ~ \
@@ -72,12 +40,6 @@ RUN set -ex && cd ~ \
   && chmod 755 terraform-docs-v0.6.0-linux-amd64 \
   && mv terraform-docs-v0.6.0-linux-amd64 /usr/local/bin/terraform-docs
 
-# install pip packages
-ADD ./requirements.txt /tmp/requirements.txt
-RUN set -ex && cd ~ \
-  && pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
-  && rm -f /tmp/requirements.txt
-
 # install CircleCI CLI
 RUN set -ex && cd ~ \
   && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5607/circleci-cli_0.1.5607_linux_amd64.tar.gz \
@@ -87,5 +49,30 @@ RUN set -ex && cd ~ \
   && chmod 755 /usr/local/bin/circleci \
   && rm -rf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz
 
+# install pip packages
+ARG CACHE_PIP
+ADD ./requirements.txt /tmp/requirements.txt
+RUN set -ex && cd ~ \
+  && pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
+  && rm -f /tmp/requirements.txt
+
+# apt-get all the things
+ARG CACHE_APT
+RUN set -ex && cd ~ \
+  && apt-get -qq update \
+  && apt-get -qq -y install --no-install-recommends apt-transport-https lsb-release \
+  && : Install Node 10.x \
+  && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+  && echo "deb https://deb.nodesource.com/node_10.x $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/nodesource.list \
+  && apt-get -qq update \
+  && apt-get -qq -y install --no-install-recommends nodejs \
+  && : Install Yarn \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  && apt-get -qq update \
+  && apt-get -qq -y install --no-install-recommends yarn \
+  && : Cleanup \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
 USER circleci
-CMD ["/bin/sh"]
