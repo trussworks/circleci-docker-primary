@@ -1,19 +1,5 @@
 # CircleCI primary docker image to run within
 FROM trussworks/circleci-docker-primary:base
-
-# Build-time metadata as defined at http://label-schema.org
-ARG BUILD_DATE
-ARG VCS_REF
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Truss CircleCI Primary Docker Image" \
-      org.label-schema.description="Truss custom-built docker image for CircleCI 2.0 jobs. Includes all tools needed to be a \"primary container\" as well as tools we test and deploy with." \
-      org.label-schema.url="https://truss.works/" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/trussworks/circleci-docker-primary" \
-      org.label-schema.vendor="TrussWorks, Inc." \
-      org.label-schema.version=$VCS_REF \
-      org.label-schema.schema-version="1.0"
-
 # Base image uses "circleci", to avoid using `sudo` run as root user
 USER root
 
@@ -32,6 +18,7 @@ RUN set -ex && cd ~ \
   && rm -f inspec_3.9.3-1_amd64.deb
 
 # install Python packages
+ARG CACHE_PIP_PACKER
 ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
   && pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
