@@ -25,4 +25,3 @@ RUN set -ex && cd ~ \
   && rm -f /tmp/requirements.txt
 
 USER circleci
-CMD ["/bin/sh"]
