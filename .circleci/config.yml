@@ -7,7 +7,7 @@ jobs:
       - run:
           name: Check for reserved branch names
           command: |
-            if [[ $CIRCLE_BRANCH = latest || $CIRCLE_BRANCH = packer ]]; then
+            if [[ $CIRCLE_BRANCH = latest || $CIRCLE_BRANCH = packer || $CIRCLE_BRANCH = tf12 ]]; then
               echo "Don't use a branch named 'latest' or 'packer'; these are meaningful tags."
               exit 1
             fi
@@ -34,6 +34,10 @@ jobs:
               # packer
               docker tag  trussworks/circleci-docker-primary:packer trussworks/circleci-docker-primary:packer-$tag
               docker push trussworks/circleci-docker-primary:packer-$tag
+               
+              # tf12
+              docker tag  trussworks/circleci-docker-primary:tf12 trussworks/circleci-docker-primary:tf12-$tag
+              docker push trussworks/circleci-docker-primary:tf12-$tag
             done
 
             # default tags
