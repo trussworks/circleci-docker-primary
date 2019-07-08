@@ -19,3 +19,9 @@ docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
              -t trussworks/circleci-docker-primary:packer \
              .
 popd
+
+pushd tf12
+docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
+             -t trussworks/circleci-docker-primary:tf12 \
+             .
+popd
