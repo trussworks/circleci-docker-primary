@@ -16,7 +16,7 @@ The following tools are installed:
 * [go-bindata](https://github.com/kevinburke/go-bindata)
 * [pre-commit](http://pre-commit.com/)
 * [ShellCheck](https://www.shellcheck.net/)
-* [Terraform](https://www.terraform.io/)
+* [Terraform 0.11](https://www.terraform.io/) (For Terraform 0.12, use tf12-tagged images)
 * [terraform-docs](https://github.com/segmentio/terraform-docs)
 * [Yarn](https://yarnpkg.com/)
 * [CircleCI](https://circleci.com/docs/2.0/local-cli/)
@@ -26,6 +26,8 @@ For `packer` tagged images, these additional tools are installed:
 * [Ansible](https://pypi.org/project/ansible/)
 * [ansible-lint](https://pypi.org/project/ansible-lint/)
 * [Packer](https://packer.io/)
+
+For `tf12` tagged images, Terraform 0.12 is installed.
 
 For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile) and [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile).
 
