@@ -7,7 +7,7 @@ USER root
 RUN set -ex && cd ~ \
   && curl -sSLO https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip \
   && [ $(sha256sum terraform_0.12.3_linux_amd64.zip | cut -f1 -d ' ') = 75e4323b8514074f8c2118ea382fc677c8b1d1730eda323ada222e0fac57f7db ] \
-  && unzip -d /usr/local/bin terraform_0.12.3_linux_amd64.zip \
+  && unzip -d /usr/local/bin -o terraform_0.12.3_linux_amd64.zip \
   && rm -f terraform_0.12.3_linux_amd64.zip
 
 USER circleci
