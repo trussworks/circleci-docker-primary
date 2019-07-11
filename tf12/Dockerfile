@@ -13,6 +13,7 @@ RUN set -ex && cd ~ \
 # apt-get all the things
 ARG CACHE_APT
 RUN set -ex && cd ~ \
+  && apt-get -qq update \
   && apt-get -y install gawk \
   && : Cleanup \
   && apt-get clean \
