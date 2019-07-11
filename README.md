@@ -27,7 +27,9 @@ For `packer` tagged images, these additional tools are installed:
 * [ansible-lint](https://pypi.org/project/ansible-lint/)
 * [Packer](https://packer.io/)
 
-For `tf12` tagged images, Terraform 0.12 is installed.
+For `tf12` tagged images, Terraform 0.12 is installed, as well as gawk,
+which needs to be present for the hacked terraform-docs pre-commit hook
+to work properly.
 
 For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile) and [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile).
 

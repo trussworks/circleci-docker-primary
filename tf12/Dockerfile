@@ -10,4 +10,13 @@ RUN set -ex && cd ~ \
   && unzip -d /usr/local/bin -o terraform_0.12.3_linux_amd64.zip \
   && rm -f terraform_0.12.3_linux_amd64.zip
 
+# apt-get all the things
+ARG CACHE_APT
+RUN set -ex && cd ~ \
+  && apt-get -qq update \
+  && apt-get -y install gawk \
+  && : Cleanup \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
 USER circleci
