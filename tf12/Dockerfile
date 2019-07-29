@@ -14,7 +14,7 @@ RUN set -ex && cd ~ \
 ARG CACHE_APT
 RUN set -ex && cd ~ \
   && apt-get -qq update \
-  && apt-get -y install gawk \
+  && apt-get -y --no-install-recommends install gawk \
   && : Cleanup \
   && apt-get clean \
   && rm -vrf /var/lib/apt/lists/*
