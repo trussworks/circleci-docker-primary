@@ -5,11 +5,11 @@ USER root
 
 # install shellcheck
 RUN set -ex && cd ~ \
-  && curl -sSLO https://shellcheck.storage.googleapis.com/shellcheck-v0.6.0.linux.x86_64.tar.xz \
-  && [ $(sha256sum shellcheck-v0.6.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 95c7d6e8320d285a9f026b5241f48f1c02d225a1b08908660e8b84e58e9c7dce ] \
-  && tar xvfa shellcheck-v0.6.0.linux.x86_64.tar.xz \
-  && mv shellcheck-v0.6.0/shellcheck /usr/local/bin \
-  && rm -vrf shellcheck-v0.6.0 shellcheck-v0.6.0.linux.x86_64.tar.xz
+  && curl -sSLO https://shellcheck.storage.googleapis.com/shellcheck-v0.7.0.linux.x86_64.tar.xz \
+  && [ $(sha512sum shellcheck-v0.7.0.linux.x86_64.tar.xz | cut -f1 -d' ') = 84e06bee3c8b8c25f46906350fb32708f4b661636c04e55bd19cdd1071265112d84906055372149678d37f09a1667019488c62a0561b81fe6a6b45ad4fae4ac0 ] \
+  && tar xvfa shellcheck-v0.7.0.linux.x86_64.tar.xz \
+  && mv shellcheck-v0.7.0/shellcheck /usr/local/bin \
+  && rm -vrf shellcheck-v0.7.0 shellcheck-v0.7.0.linux.x86_64.tar.xz
 
 # install Go
 RUN set -ex && cd ~ \
@@ -17,7 +17,7 @@ RUN set -ex && cd ~ \
   && [ $(sha256sum go1.12.5.linux-amd64.tar.gz | cut -f1 -d' ') = aea86e3c73495f205929cfebba0d63f1382c8ac59be081b6351681415f4063cf ] \
   && tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz \
   && ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm go1.12.5.linux-amd64.tar.gz
+  && rm -v go1.12.5.linux-amd64.tar.gz
 
 # install go-bindata
 RUN set -ex && cd ~ \
@@ -31,7 +31,7 @@ RUN set -ex && cd ~ \
   && curl -sSLO https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip \
   && [ $(sha256sum terraform_0.11.14_linux_amd64.zip | cut -f1 -d ' ') = 9b9a4492738c69077b079e595f5b2a9ef1bc4e8fb5596610f69a6f322a8af8dd ] \
   && unzip -d /usr/local/bin terraform_0.11.14_linux_amd64.zip \
-  && rm -f terraform_0.11.14_linux_amd64.zip
+  && rm -vf terraform_0.11.14_linux_amd64.zip
 
 # install terraform-docs
 RUN set -ex && cd ~ \
@@ -47,14 +47,14 @@ RUN set -ex && cd ~ \
   && tar xzf circleci-cli_0.1.5607_linux_amd64.tar.gz \
   && mv circleci-cli_0.1.5607_linux_amd64/circleci /usr/local/bin \
   && chmod 755 /usr/local/bin/circleci \
-  && rm -rf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz
+  && rm -vrf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz
 
 # install pip packages
 ARG CACHE_PIP
 ADD ./requirements.txt /tmp/requirements.txt
 RUN set -ex && cd ~ \
   && pip install -r /tmp/requirements.txt --no-cache-dir --disable-pip-version-check \
-  && rm -f /tmp/requirements.txt
+  && rm -vf /tmp/requirements.txt
 
 # apt-get all the things
 ARG CACHE_APT
@@ -73,6 +73,6 @@ RUN set -ex && cd ~ \
   && apt-get -qq -y install --no-install-recommends yarn \
   && : Cleanup \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -vrf /var/lib/apt/lists/*
 
 USER circleci
