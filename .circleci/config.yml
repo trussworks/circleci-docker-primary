@@ -34,7 +34,7 @@ jobs:
               # packer
               docker tag  trussworks/circleci-docker-primary:packer trussworks/circleci-docker-primary:packer-$tag
               docker push trussworks/circleci-docker-primary:packer-$tag
-               
+
               # tf12
               docker tag  trussworks/circleci-docker-primary:tf12 trussworks/circleci-docker-primary:tf12-$tag
               docker push trussworks/circleci-docker-primary:tf12-$tag
