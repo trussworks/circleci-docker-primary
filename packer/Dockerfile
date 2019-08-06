@@ -5,10 +5,10 @@ USER root
 
 # install Packer
 RUN set -ex && cd ~ \
-  && curl -LO https://releases.hashicorp.com/packer/1.3.5/packer_1.3.5_linux_amd64.zip \
-  && [ $(sha256sum packer_1.3.5_linux_amd64.zip | cut -f1 -d ' ') = 14922d2bca532ad6ee8e936d5ad0788eba96f773bcdcde8c2dc7c95f830841ec ] \
-  && unzip -d /usr/local/bin packer_1.3.5_linux_amd64.zip \
-  && rm -vf packer_1.3.5_linux_amd64.zip
+  && curl -LO https://releases.hashicorp.com/packer/1.4.2/packer_1.4.2_linux_amd64.zip \
+  && [ $(sha256sum packer_1.4.2_linux_amd64.zip | cut -f1 -d ' ') = 2fcbd1662ac76dc4dec381bdc7b5e6316d5b9d48e0774a32fe6ef9ec19f47213 ] \
+  && unzip -d /usr/local/bin packer_1.4.2_linux_amd64.zip \
+  && rm -vf packer_1.4.2_linux_amd64.zip
 
 # install inspec
 RUN set -ex && cd ~ \
