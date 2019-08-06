@@ -16,10 +16,15 @@ The following tools are installed:
 * [go-bindata](https://github.com/kevinburke/go-bindata)
 * [pre-commit](http://pre-commit.com/)
 * [ShellCheck](https://www.shellcheck.net/)
-* [Terraform 0.11](https://www.terraform.io/) (For Terraform 0.12, use tf12-tagged images)
+* [Terraform](https://www.terraform.io/) 0.11.x (see `tf12` below for 0.12.x)
 * [terraform-docs](https://github.com/segmentio/terraform-docs)
 * [Yarn](https://yarnpkg.com/)
-* [CircleCI](https://circleci.com/docs/2.0/local-cli/)
+* [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
+
+For `tf12` tagged images, these additional tools are installed:
+
+* [Terraform](https://www.terraform.io/) 0.12.x (overwrites Terraform 0.11.x)
+* [GNU awk](https://www.gnu.org/software/gawk/) (gawk) – needed so the [terraform-docs pre-commit hook](https://github.com/antonbabenko/pre-commit-terraform/) kludge can work
 
 For `packer` tagged images, these additional tools are installed:
 
@@ -27,15 +32,12 @@ For `packer` tagged images, these additional tools are installed:
 * [ansible-lint](https://pypi.org/project/ansible-lint/)
 * [Packer](https://packer.io/)
 
-For `tf12` tagged images, Terraform 0.12 is installed, as well as gawk,
-which needs to be present for the hacked terraform-docs pre-commit hook
-to work properly.
-
 For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile) and [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile).
 
 For the latest stable images:
 
-* `trussworks/circleci-docker-primary:master`
+* `trussworks/circleci-docker-primary:latest`
+* `trussworks/circleci-docker-primary:tf12`
 * `trussworks/circleci-docker-primary:packer`
 
 For static tags, use tags including the git hash. You can find the hashes in this repo, from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
