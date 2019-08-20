@@ -42,12 +42,12 @@ RUN set -ex && cd ~ \
 
 # install CircleCI CLI
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5607/circleci-cli_0.1.5607_linux_amd64.tar.gz \
-  && [ $(sha256sum circleci-cli_0.1.5607_linux_amd64.tar.gz | cut -f1 -d' ') = 125e711d4e834254fca04a381530ce2f2d7e337e4f4710cd8a4a3283c19a7b9b ] \
-  && tar xzf circleci-cli_0.1.5607_linux_amd64.tar.gz \
-  && mv circleci-cli_0.1.5607_linux_amd64/circleci /usr/local/bin \
+  && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5810/circleci-cli_0.1.5810_linux_amd64.tar.gz \
+  && [ $(sha256sum circleci-cli_0.1.5810_linux_amd64.tar.gz | cut -f1 -d' ') = 6a660183df4bbace8b4286395687f3bc9c74224fa3a9896381eb5b3252f07d1f ] \
+  && tar xzf circleci-cli_0.1.5810_linux_amd64.tar.gz \
+  && mv circleci-cli_0.1.5810_linux_amd64/circleci /usr/local/bin \
   && chmod 755 /usr/local/bin/circleci \
-  && rm -vrf circleci-cli_0.1.5607_linux_amd64 circleci-cli_0.1.5607_linux_amd64.tar.gz
+  && rm -vrf circleci-cli_0.1.5810_linux_amd64 circleci-cli_0.1.5810_linux_amd64.tar.gz
 
 # install pip packages
 ARG CACHE_PIP
