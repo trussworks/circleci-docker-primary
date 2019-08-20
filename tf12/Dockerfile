@@ -5,10 +5,10 @@ USER root
 
 # install Terraform
 RUN set -ex && cd ~ \
-  && curl -sSLO https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_linux_amd64.zip \
-  && [ $(sha256sum terraform_0.12.5_linux_amd64.zip | cut -f1 -d ' ') = babb4a30b399fb6fc87a6aa7435371721310c2e2102a95a763ef2c979ab06ce2 ] \
-  && unzip -d /usr/local/bin -o terraform_0.12.5_linux_amd64.zip \
-  && rm -vf terraform_0.12.5_linux_amd64.zip
+  && curl -sSLO https://releases.hashicorp.com/terraform/0.12.6/terraform_0.12.6_linux_amd64.zip \
+  && [ $(sha256sum terraform_0.12.6_linux_amd64.zip | cut -f1 -d ' ') = 6544eb55b3e916affeea0a46fe785329c36de1ba1bdb51ca5239d3567101876f ] \
+  && unzip -d /usr/local/bin -o terraform_0.12.6_linux_amd64.zip \
+  && rm -vf terraform_0.12.6_linux_amd64.zip
 
 # apt-get all the things
 ARG CACHE_APT
