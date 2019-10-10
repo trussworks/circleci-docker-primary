@@ -1,0 +1,37 @@
+version: 1
+update_configs:
+  # Keep docker modules up to date in root, batching pull requests weekly
+  - package_manager: "docker"
+    directory: "/"
+    update_schedule: "weekly"
+    # Apply dependencies label to PRs
+    default_labels:
+      - "dependencies"
+  # Keep docker modules up to date in packer dir, batching pull requests weekly
+  - package_manager: "docker"
+    directory: "/packer"
+    update_schedule: "weekly"
+    # Apply dependencies label to PRs
+    default_labels:
+      - "dependencies"
+  # Keep docker modules up to date in tf12 dir, batching pull requests weekly
+  - package_manager: "docker"
+    directory: "/tf12"
+    update_schedule: "weekly"
+    # Apply dependencies label to PRs
+    default_labels:
+      - "dependencies"
+  # Keep python modules up to date in root, batching pull requests weekly
+  - package_manager: "python"
+    directory: "/"
+    update_schedule: "weekly"
+    # Apply dependencies label to PRs
+    default_labels:
+      - "dependencies"
+  # Keep python modules up to date in packer dir, batching pull requests weekly
+  - package_manager: "python"
+    directory: "/packer"
+    update_schedule: "weekly"
+    # Apply dependencies label to PRs
+    default_labels:
+      - "dependencies"
