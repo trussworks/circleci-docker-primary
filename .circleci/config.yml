@@ -27,7 +27,7 @@ jobs:
           name: Release container
           command: |
             shopt -s extglob
-            for tag in $CIRCLE_SHA1 $CIRCLE_BRANCH${CIRCLE_BRANCH//+([^A-Za-z0-9-.])/-}; do
+            for tag in $CIRCLE_SHA1 ${CIRCLE_BRANCH//+([^A-Za-z0-9-.])/-}; do
               # latest
               docker tag  trussworks/circleci-docker-primary trussworks/circleci-docker-primary:$tag
               docker push trussworks/circleci-docker-primary:$tag
