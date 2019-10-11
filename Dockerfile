@@ -49,6 +49,14 @@ RUN set -ex && cd ~ \
   && chmod 755 /usr/local/bin/circleci \
   && rm -vrf circleci-cli_0.1.5879_linux_amd64 circleci-cli_0.1.5879_linux_amd64.tar.gz
 
+# install hub
+RUN set -ex && cd ~ \
+ && curl -sSLO https://github.com/github/hub/releases/download/v2.12.8/hub-linux-amd64-2.12.8.tgz \
+ && [ $(sha256sum hub-linux-amd64-2.12.8.tgz | cut -f1 -d' ') = 7093adfd1218ed031e3ebc9a0dde241e0bb6e11b8218a815280cf42ddbdc19e0 ] \
+ && tar xzf hub-linux-amd64-2.12.8.tgz \
+ && hub-linux-amd64-2.12.8/install \
+ && rm -rf hub-linux-amd64-2.12.8
+
 # install pip packages
 ARG CACHE_PIP
 ADD ./requirements.txt /tmp/requirements.txt
