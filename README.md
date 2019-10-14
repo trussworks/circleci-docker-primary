@@ -20,6 +20,7 @@ The following tools are installed:
 * [terraform-docs](https://github.com/segmentio/terraform-docs)
 * [Yarn](https://yarnpkg.com/)
 * [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
+* [hub](https://hub.github.com/)
 
 For `tf12` tagged images, these additional tools are installed:
 
