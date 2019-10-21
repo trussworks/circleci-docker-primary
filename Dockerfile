@@ -15,7 +15,7 @@ RUN set -ex && cd ~ \
 RUN set -ex && cd ~ \
   && curl -sSLO https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz \
   && [ $(sha256sum go1.13.3.linux-amd64.tar.gz | cut -f1 -d' ') = 0804bf02020dceaa8a7d7275ee79f7a142f1996bfd0c39216ccb405f93f994c0 ] \
-  && tar -C /usr/local -xzf go1.13.1.linux-amd64.tar.gz \
+  && tar -C /usr/local -xzf go1.13.3.linux-amd64.tar.gz \
   && ln -s /usr/local/go/bin/* /usr/local/bin \
   && rm -v go1.13.3.linux-amd64.tar.gz
 
