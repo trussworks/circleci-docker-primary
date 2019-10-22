@@ -13,11 +13,11 @@ RUN set -ex && cd ~ \
 
 # install Go
 RUN set -ex && cd ~ \
-  && curl -sSLO https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz \
-  && [ $(sha256sum go1.13.1.linux-amd64.tar.gz | cut -f1 -d' ') = 94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124 ] \
-  && tar -C /usr/local -xzf go1.13.1.linux-amd64.tar.gz \
+  && curl -sSLO https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz \
+  && [ $(sha256sum go1.13.3.linux-amd64.tar.gz | cut -f1 -d' ') = 0804bf02020dceaa8a7d7275ee79f7a142f1996bfd0c39216ccb405f93f994c0 ] \
+  && tar -C /usr/local -xzf go1.13.3.linux-amd64.tar.gz \
   && ln -s /usr/local/go/bin/* /usr/local/bin \
-  && rm -v go1.13.1.linux-amd64.tar.gz
+  && rm -v go1.13.3.linux-amd64.tar.gz
 
 # install go-bindata
 RUN set -ex && cd ~ \
@@ -51,11 +51,11 @@ RUN set -ex && cd ~ \
 
 # install hub
 RUN set -ex && cd ~ \
- && curl -sSLO https://github.com/github/hub/releases/download/v2.12.8/hub-linux-amd64-2.12.8.tgz \
- && [ $(sha256sum hub-linux-amd64-2.12.8.tgz | cut -f1 -d' ') = 7093adfd1218ed031e3ebc9a0dde241e0bb6e11b8218a815280cf42ddbdc19e0 ] \
- && tar xzf hub-linux-amd64-2.12.8.tgz \
- && hub-linux-amd64-2.12.8/install \
- && rm -rf hub-linux-amd64-2.12.8
+  && curl -sSLO https://github.com/github/hub/releases/download/v2.12.8/hub-linux-amd64-2.12.8.tgz \
+  && [ $(sha256sum hub-linux-amd64-2.12.8.tgz | cut -f1 -d' ') = 7093adfd1218ed031e3ebc9a0dde241e0bb6e11b8218a815280cf42ddbdc19e0 ] \
+  && tar xzf hub-linux-amd64-2.12.8.tgz \
+  && hub-linux-amd64-2.12.8/install \
+  && rm -rf hub-linux-amd64-2.12.8
 
 # install pip packages
 ARG CACHE_PIP
