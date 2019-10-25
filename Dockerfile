@@ -26,12 +26,11 @@ RUN set -ex && cd ~ \
   && chmod 755 go-bindata-linux-amd64 \
   && mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
 
-# install Terraform
-RUN set -ex && cd ~ \
-  && curl -sSLO https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip \
-  && [ $(sha256sum terraform_0.11.14_linux_amd64.zip | cut -f1 -d ' ') = 9b9a4492738c69077b079e595f5b2a9ef1bc4e8fb5596610f69a6f322a8af8dd ] \
-  && unzip -d /usr/local/bin terraform_0.11.14_linux_amd64.zip \
-  && rm -vf terraform_0.11.14_linux_amd64.zip
+# Install tfenv and install terraform 0.11.14 & 0.12.12
+RUN git clone https://github.com/tfutils/tfenv.git /opt/tfenv \
+  && ln -s /opt/tfenv/bin/* /usr/local/bin/ \
+  && tfenv install 0.11.14 \
+  && tfenv install 0.12.12
 
 # install terraform-docs
 RUN set -ex && cd ~ \
