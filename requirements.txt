@@ -1,2 +1,2 @@
-awscli==1.16.260
+awscli==1.16.268
 pre-commit==1.19.0
