@@ -51,11 +51,11 @@ RUN set -ex && cd ~ \
 
 # install hub
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/github/hub/releases/download/v2.12.8/hub-linux-amd64-2.12.8.tgz \
-  && [ $(sha256sum hub-linux-amd64-2.12.8.tgz | cut -f1 -d' ') = 7093adfd1218ed031e3ebc9a0dde241e0bb6e11b8218a815280cf42ddbdc19e0 ] \
-  && tar xzf hub-linux-amd64-2.12.8.tgz \
-  && hub-linux-amd64-2.12.8/install \
-  && rm -rf hub-linux-amd64-2.12.8
+  && curl -sSLO https://github.com/github/hub/releases/download/v2.13.0/hub-linux-amd64-2.13.0.tgz \
+  && [ $(sha256sum hub-linux-amd64-2.13.0.tgz | cut -f1 -d' ') = e0f117d553f771938ee594ef280e1b2edf3feebab7c7cb55eab0240a76928652 ] \
+  && tar xzf hub-linux-amd64-2.13.0.tgz \
+  && hub-linux-amd64-2.13.0/install \
+  && rm -rf hub-linux-amd64-2.13.0
 
 # install pip packages
 ARG CACHE_PIP
