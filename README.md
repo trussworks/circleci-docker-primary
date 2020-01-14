@@ -21,11 +21,11 @@ The following tools are installed:
 * [Yarn](https://yarnpkg.com/)
 * [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
 * [hub](https://hub.github.com/)
+* [GNU awk](https://www.gnu.org/software/gawk/) (gawk) – needed so the [terraform-docs pre-commit hook](https://github.com/antonbabenko/pre-commit-terraform/) kludge can work
 
 For `tf11` tagged images, these additional tools are installed:
 
 * [Terraform](https://www.terraform.io/) 0.11.x (overwrites Terraform 0.11.x)
-* [GNU awk](https://www.gnu.org/software/gawk/) (gawk) – needed so the [terraform-docs pre-commit hook](https://github.com/antonbabenko/pre-commit-terraform/) kludge can work
 
 For `packer` tagged images, these additional tools are installed:
 

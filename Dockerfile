@@ -72,13 +72,13 @@ RUN set -ex && cd ~ \
   && : Install Node 10.x \
   && curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
   && echo "deb https://deb.nodesource.com/node_10.x $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/nodesource.list \
-  && apt-get -qq update \
   && apt-get -qq -y install --no-install-recommends nodejs \
   && : Install Yarn \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get -qq update \
   && apt-get -qq -y install --no-install-recommends yarn \
+  && : Install gawk so the terraform-docs pre-commit hack works \
+  && apt-get -qq -y install --no-install-recommends gawk \
   && : Cleanup \
   && apt-get clean \
   && rm -vrf /var/lib/apt/lists/*

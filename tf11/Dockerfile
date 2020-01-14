@@ -10,14 +10,4 @@ RUN set -ex && cd ~ \
   && unzip -o -d /usr/local/bin terraform_0.11.14_linux_amd64.zip \
   && rm -vf terraform_0.11.14_linux_amd64.zip
 
-# apt-get all the things
-ARG CACHE_APT
-RUN set -ex && cd ~ \
-  && apt-get -qq update \
-  && : Install gawk so the terraform-docs pre-commit hack works \
-  && apt-get -y --no-install-recommends install gawk \
-  && : Cleanup \
-  && apt-get clean \
-  && rm -vrf /var/lib/apt/lists/*
-
 USER circleci
