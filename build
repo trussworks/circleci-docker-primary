@@ -12,6 +12,7 @@ docker build --build-arg CACHE_APT="$CACHE_APT" \
              --build-arg CACHE_PIP="$CACHE_PIP" \
              -t trussworks/circleci-docker-primary \
              -t trussworks/circleci-docker-primary:base \
+             -t trussworks/circleci-docker-primary:tf12 \
              .
 
 pushd packer
@@ -20,8 +21,8 @@ docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
              .
 popd
 
-pushd tf12
+pushd tf11
 docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
-             -t trussworks/circleci-docker-primary:tf12 \
+             -t trussworks/circleci-docker-primary:tf11 \
              .
 popd
