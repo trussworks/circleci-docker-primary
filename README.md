@@ -6,7 +6,7 @@ This is [Truss](https://truss.works/)' custom-built docker image for use with Ci
 
 The following languages are installed:
 
-* Python 3.7.x (container base image)
+* Python 3.8.x (container base image)
 * Go 1.13.x
 * Node 10.x
 
@@ -21,7 +21,6 @@ The following tools are installed:
 * [Yarn](https://yarnpkg.com/)
 * [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
 * [hub](https://hub.github.com/)
-* [GNU awk](https://www.gnu.org/software/gawk/) (gawk) – needed so the [terraform-docs pre-commit hook](https://github.com/antonbabenko/pre-commit-terraform/) kludge can work
 
 For `tf11` tagged images, these additional tools are installed:
 

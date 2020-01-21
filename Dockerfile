@@ -67,7 +67,6 @@ RUN set -ex && cd ~ \
 # apt-get all the things
 # Notes:
 # - Add all apt sources first
-# - Install gawk so the terraform-docs pre-commit hack works
 ARG CACHE_APT
 RUN set -ex && cd ~ \
   && : Install apt packages \
@@ -80,7 +79,7 @@ RUN set -ex && cd ~ \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get -qq update \
   && : Install apt packages \
-  && apt-get -qq -y install --no-install-recommends nodejs yarn gawk \
+  && apt-get -qq -y install --no-install-recommends nodejs yarn \
   && : Cleanup \
   && apt-get clean \
   && rm -vrf /var/lib/apt/lists/*
