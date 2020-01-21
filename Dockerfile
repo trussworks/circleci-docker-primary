@@ -35,10 +35,10 @@ RUN set -ex && cd ~ \
 
 # install terraform-docs
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/segmentio/terraform-docs/releases/download/v0.7.0/terraform-docs-v0.7.0-linux-amd64 \
-  && [ $(sha256sum terraform-docs-v0.7.0-linux-amd64 | cut -f1 -d' ') = c5f37a9d5731c987e1d1a95bb6ec77261c483d51f659cbd9fbcabf2199fb8360 ] \
-  && chmod 755 terraform-docs-v0.7.0-linux-amd64 \
-  && mv terraform-docs-v0.7.0-linux-amd64 /usr/local/bin/terraform-docs
+  && curl -sSLO https://github.com/segmentio/terraform-docs/releases/download/v0.8.0/terraform-docs-v0.8.0-linux-amd64 \
+  && [ $(sha256sum terraform-docs-v0.8.0-linux-amd64 | cut -f1 -d' ') = 724aa705f02cb918221af9654a7ef257074aa5d4235c2796453b84fea7958691 ] \
+  && chmod 755 terraform-docs-v0.8.0-linux-amd64 \
+  && mv terraform-docs-v0.8.0-linux-amd64 /usr/local/bin/terraform-docs
 
 # install CircleCI CLI
 RUN set -ex && cd ~ \
@@ -67,7 +67,6 @@ RUN set -ex && cd ~ \
 # apt-get all the things
 # Notes:
 # - Add all apt sources first
-# - Install gawk so the terraform-docs pre-commit hack works
 ARG CACHE_APT
 RUN set -ex && cd ~ \
   && : Install apt packages \
@@ -80,7 +79,7 @@ RUN set -ex && cd ~ \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get -qq update \
   && : Install apt packages \
-  && apt-get -qq -y install --no-install-recommends nodejs yarn gawk \
+  && apt-get -qq -y install --no-install-recommends nodejs yarn \
   && : Cleanup \
   && apt-get clean \
   && rm -vrf /var/lib/apt/lists/*
