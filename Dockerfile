@@ -35,10 +35,10 @@ RUN set -ex && cd ~ \
 
 # install terraform-docs
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/segmentio/terraform-docs/releases/download/v0.7.0/terraform-docs-v0.7.0-linux-amd64 \
-  && [ $(sha256sum terraform-docs-v0.7.0-linux-amd64 | cut -f1 -d' ') = c5f37a9d5731c987e1d1a95bb6ec77261c483d51f659cbd9fbcabf2199fb8360 ] \
-  && chmod 755 terraform-docs-v0.7.0-linux-amd64 \
-  && mv terraform-docs-v0.7.0-linux-amd64 /usr/local/bin/terraform-docs
+  && curl -sSLO https://github.com/segmentio/terraform-docs/releases/download/v0.8.0/terraform-docs-v0.8.0-linux-amd64 \
+  && [ $(sha256sum terraform-docs-v0.8.0-linux-amd64 | cut -f1 -d' ') = 724aa705f02cb918221af9654a7ef257074aa5d4235c2796453b84fea7958691 ] \
+  && chmod 755 terraform-docs-v0.8.0-linux-amd64 \
+  && mv terraform-docs-v0.8.0-linux-amd64 /usr/local/bin/terraform-docs
 
 # install CircleCI CLI
 RUN set -ex && cd ~ \
