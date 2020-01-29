@@ -28,10 +28,10 @@ RUN set -ex && cd ~ \
 
 # install Terraform
 RUN set -ex && cd ~ \
-  && curl -sSLO https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip \
-  && [ $(sha256sum terraform_0.12.19_linux_amd64.zip | cut -f1 -d ' ') = a549486112f5350075fb540cfd873deb970a9baf8a028a86ee7b4472fc91e167 ] \
-  && unzip -o -d /usr/local/bin -o terraform_0.12.19_linux_amd64.zip \
-  && rm -vf terraform_0.12.19_linux_amd64.zip
+  && curl -sSLO https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip \
+  && [ $(sha256sum terraform_0.12.20_linux_amd64.zip | cut -f1 -d ' ') = 46bd906f8cb9bbb871905ecb23ae7344af8017d214d735fbb6d6c8e0feb20ff3 ] \
+  && unzip -o -d /usr/local/bin -o terraform_0.12.20_linux_amd64.zip \
+  && rm -vf terraform_0.12.20_linux_amd64.zip
 
 # install terraform-docs
 RUN set -ex && cd ~ \
