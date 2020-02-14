@@ -3,6 +3,13 @@ FROM circleci/python:3.8-buster
 # Base image uses "circleci", to avoid using `sudo` run as root user
 USER root
 
+# Golang env flags that limit parallel execution
+# The golang default is to use the max CPUs or default to 36.
+# In CircleCI 2.0 the max CPUs is 2 but golang can't get this from the environment so it defaults to 36
+# This can cause build flakiness for larger projects. Setting a value here that can be overridden during execution
+# may prevent others from experiencing this same problem.
+ENV GOFLAGS=-p=4
+
 # install shellcheck
 ARG SHELLCHECK_VERSION=0.7.0
 ARG SHELLCHECK_SHA256SUM=39c501aaca6aae3f3c7fc125b3c3af779ddbe4e67e4ebdc44c2ae5cba76c847f
