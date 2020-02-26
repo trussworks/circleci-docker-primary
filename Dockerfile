@@ -78,9 +78,9 @@ RUN set -ex && cd ~ \
   && hub-linux-amd64-${HUB_VERSION}/install \
   && rm -rf hub-linux-amd64-${HUB_VERSION}
 
-# install awscli2
-COPY sigs/awscli2_pgp.key /tmp/awscli2_pgp.key
-RUN gpg --import /tmp/awscli2_pgp.key
+# install awscliv2
+COPY sigs/awscliv2_pgp.key /tmp/awscliv2_pgp.key
+RUN gpg --import /tmp/awscliv2_pgp.key
 RUN set -ex && cd ~ \
   && curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip \
   && curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig" -o awscliv2.sig \
