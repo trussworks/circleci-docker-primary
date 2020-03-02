@@ -26,3 +26,27 @@ docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
              -t trussworks/circleci-docker-primary:tf11 \
              .
 popd
+
+
+pushd go
+docker build --build-arg CACHE_APT="CACHE_APT" \
+	     -t trussworks/circleci-docker-go \
+	     -t trussworks/circleci-docker-go:base \
+             -t trussworks/circleci-docker-go:tf12 \
+             .
+popd
+
+pushd python
+docker build --build-arg CACHE_APT="CACHE_APT" \
+	     --build-arg CACHE_PIP="CACHE_PIP" \
+	     -t trussworks/circleci-docker-python \
+	     -t trussworks/circleci-docker-python:base \
+             .
+popd
+
+pushd node
+docker build --build-arg CACHE_APT="CACHE_APT" \
+	     -t trussworks/circleci-docker-node \
+	     -t trussworks/circleci-docker-node:base \
+	     .
+popd
