@@ -78,7 +78,8 @@ RUN set -ex && cd ~ \
   && hub-linux-amd64-${HUB_VERSION}/install \
   && rm -rf hub-linux-amd64-${HUB_VERSION}
 
-# install awscliv2
+# install awscliv2, disable default pager (less)
+ENV AWS_PAGER=""
 ARG AWSCLI_VERSION=2.0.1
 COPY sigs/awscliv2_pgp.key /tmp/awscliv2_pgp.key
 RUN gpg --import /tmp/awscliv2_pgp.key
