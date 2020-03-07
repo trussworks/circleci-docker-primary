@@ -58,8 +58,8 @@ RUN set -ex && cd ~ \
   && mv terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 /usr/local/bin/terraform-docs
 
 # install circleci cli
-ARG CIRCLECI_CLI_VERSION=0.1.5879
-ARG CIRCLECI_CLI_SHA256SUM=f178ea62c781aec06267017404f87983c87f171fd0e66ef3737916246ae66dd6
+ARG CIRCLECI_CLI_VERSION=0.1.6893
+ARG CIRCLECI_CLI_SHA256SUM=d4bc8d1a9d7d07862caa5e060cb4accc742205cab651067278e584d1ac727247
 RUN set -ex && cd ~ \
   && curl -sSLO https://github.com/CircleCI-Public/circleci-cli/releases/download/v${CIRCLECI_CLI_VERSION}/circleci-cli_${CIRCLECI_CLI_VERSION}_linux_amd64.tar.gz \
   && [ $(sha256sum circleci-cli_${CIRCLECI_CLI_VERSION}_linux_amd64.tar.gz | cut -f1 -d' ') = ${CIRCLECI_CLI_SHA256SUM} ] \
