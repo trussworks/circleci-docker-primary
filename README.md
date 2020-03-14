@@ -21,6 +21,7 @@ The following tools are installed:
 * [Yarn](https://yarnpkg.com/)
 * [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
 * [hub](https://hub.github.com/)
+* [goreleaser](https://goreleaser.com/)
 
 For `tf11` tagged images, these additional tools are installed:
 
