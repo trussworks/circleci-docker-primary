@@ -40,8 +40,8 @@ RUN set -ex && cd ~ \
   && mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
 
 # install terraform
-ARG TERRAFORM_VERSION=0.12.23
-ARG TERRAFORM_SHA256SUM=78fd53c0fffd657ee0ab5decac604b0dea2e6c0d4199a9f27db53f081d831a45
+ARG TERRAFORM_VERSION=0.12.24
+ARG TERRAFORM_SHA256SUM=602d2529aafdaa0f605c06adb7c72cfb585d8aa19b3f4d8d189b42589e27bf11
 RUN set -ex && cd ~ \
   && curl -sSLO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && [ $(sha256sum terraform_${TERRAFORM_VERSION}_linux_amd64.zip | cut -f1 -d ' ') = ${TERRAFORM_SHA256SUM} ] \
