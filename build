@@ -21,6 +21,11 @@ docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
              .
 popd
 
+pushd nuker
+docker build -t trussworks/circleci-docker-primary:nuker \
+             .
+popd
+
 pushd tf11
 docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
              -t trussworks/circleci-docker-primary:tf11 \
