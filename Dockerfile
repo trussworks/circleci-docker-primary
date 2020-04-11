@@ -11,8 +11,8 @@ USER root
 ENV GOFLAGS=-p=4
 
 # install shellcheck
-ARG SHELLCHECK_VERSION=0.7.0
-ARG SHELLCHECK_SHA256SUM=39c501aaca6aae3f3c7fc125b3c3af779ddbe4e67e4ebdc44c2ae5cba76c847f
+ARG SHELLCHECK_VERSION=0.7.1
+ARG SHELLCHECK_SHA256SUM=26919b4519a387efcba5b2971e2e986cb678f5e7224a0913def4b4afa4d16ee0
 RUN set -ex && cd ~ \
   && curl -sSLO https://shellcheck.storage.googleapis.com/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
   && [ $(sha256sum shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz | cut -f1 -d' ') = ${SHELLCHECK_SHA256SUM} ] \
