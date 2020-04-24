@@ -12,9 +12,9 @@ ENV GOFLAGS=-p=4
 
 # install shellcheck
 ARG SHELLCHECK_VERSION=0.7.1
-ARG SHELLCHECK_SHA256SUM=26919b4519a387efcba5b2971e2e986cb678f5e7224a0913def4b4afa4d16ee0
+ARG SHELLCHECK_SHA256SUM=64f17152d96d7ec261ad3086ed42d18232fcb65148b44571b564d688269d36c8
 RUN set -ex && cd ~ \
-  && curl -sSLO https://shellcheck.storage.googleapis.com/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
+  && curl -sSLO https://github.com/koalaman/shellcheck/releases/download/v${SHELLCHECK_VERSION}/shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
   && [ $(sha256sum shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz | cut -f1 -d' ') = ${SHELLCHECK_SHA256SUM} ] \
   && tar xvfa shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz \
   && mv shellcheck-v${SHELLCHECK_VERSION}/shellcheck /usr/local/bin \
