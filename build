@@ -9,30 +9,25 @@ CACHE_PIP=$(shasum -a 256 requirements.txt | cut -f1 -d' ')
 CACHE_PIP_PACKER=$(shasum -a 256 packer/requirements.txt | cut -f1 -d' ')
 
 docker build --build-arg CACHE_APT="$CACHE_APT" \
-             --build-arg CACHE_PIP="$CACHE_PIP" \
-             -t trussworks/circleci-docker-primary \
-             -t trussworks/circleci-docker-primary:base \
-             -t trussworks/circleci-docker-primary:tf12 \
-             .
+	     --build-arg CACHE_PIP="$CACHE_PIP" \
+	     -t trussworks/circleci-docker-primary \
+	     -t trussworks/circleci-docker-primary:base \
+	     -t trussworks/circleci-docker-primary:tf13 \
+	     .
 
 pushd packer
 docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
-             -t trussworks/circleci-docker-primary:packer \
-             .
+	     -t trussworks/circleci-docker-primary:packer .
 popd
 
 pushd nuker
-docker build -t trussworks/circleci-docker-primary:nuker \
-             .
+docker build -t trussworks/circleci-docker-primary:nuker .
 popd
 
 pushd rotator
-docker build -t trussworks/circleci-docker-primary:rotator \
-             .
+docker build -t trussworks/circleci-docker-primary:rotator .
 popd
 
-pushd tf11
-docker build --build-arg CACHE_PIP_PACKER="$CACHE_PIP_PACKER" \
-             -t trussworks/circleci-docker-primary:tf11 \
-             .
+pushd tf13
+docker build -t trussworks/circleci-docker-primary:tf13 .
 popd
