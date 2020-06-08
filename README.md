@@ -25,7 +25,7 @@ The following tools are installed:
 
 For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile)
 
-## Tool Specific Images Terraform version
+## Tool Specific Images
 
 ### tf13
 
