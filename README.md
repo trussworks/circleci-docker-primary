@@ -23,41 +23,37 @@ The following tools are installed:
 - [hub](https://hub.github.com/)
 - [goreleaser](https://goreleaser.com/)
 
+For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile)
+
 ## Tool Specific Images Terraform version
 
-## tf13
+### tf13
 
-Next major release of Terraform that is currently in beta. This is meant for early testing and will eventually be merged back into the main image.
+Next major release of Terraform that is currently in beta. This is meant for early testing and will eventually be merged back into the main image. See [tf13/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/tf13/Dockerfile) for exact versions.
 
 - [Terraform](https://www.terraform.io/) 0.13.x (overwrites Terraform 0.12.x)
 
-## packer
+### packer
 
-For building AMIs via packer and configuring them with Ansible.
+For building AMIs via packer and configuring them with Ansible. See [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile) for exact versions.
 
 - [Ansible](https://pypi.org/project/ansible/)
 - [ansible-lint](https://pypi.org/project/ansible-lint/)
 - [Packer](https://packer.io/)
 
-## nuker
+### nuker
 
-For being able to nuke AWS resources in an entire account.
+For being able to nuke AWS resources in an entire account. See - [nuker/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/nuker/Dockerfile) for exact versions.
 
 - [AWS-Nuke](https://github.com/rebuy-de/aws-nuke)
 
-## rotator
+### rotator
 
-For rotating AWS Access Keys tied to robot IAM users (e.g., CircleCI) automatically.
+For rotating AWS Access Keys tied to robot IAM users (e.g., CircleCI) automatically. See [rotator/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/rotator/Dockerfile) for exact versions.
 
 - [Rotator](https://github.com/chanzuckerberg/rotator)
 
-For more details and exact versions, see
-
-- [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile)
-- [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile)
-- [nuker/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/nuker/Dockerfile)
-- [rotator/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/rotator/Dockerfile)
-- [tf13/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/tf13/Dockerfile)
+## Tagging
 
 For the latest stable images:
 
