@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -x -eu -o pipefail
+
+if [[ $CIRCLE_BRANCH = latest || $CIRCLE_BRANCH = packer || $CIRCLE_BRANCH = tf13 || $CIRCLE_BRANCH = rotator || $CIRCLE_BRANCH = nuker ]]; then
+    echo "Don't use a branch named 'latest', 'packer', 'tf13', 'rotator' or 'nuker'; these are meaningful tags."
+    exit 1
+fi

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -x -eu -o pipefail
+
+shopt -s extglob
+for tag in $CIRCLE_SHA1 ${CIRCLE_BRANCH//+([^A-Za-z0-9-.])/-}; do
+    # latest
+    docker tag  trussworks/circleci-docker-primary trussworks/circleci-docker-primary:"$tag"
+    docker push trussworks/circleci-docker-primary:"$tag"
+
+    for image in packer tf13 rotator nuker; do
+	docker tag  trussworks/circleci-docker-primary:"$image" trussworks/circleci-docker-primary:"$image-$tag"
+	docker push trussworks/circleci-docker-primary:"$image-$tag"
+    done
+done
+
+# default tags
+if [[ $CIRCLE_BRANCH = master ]]; then
+    docker push trussworks/circleci-docker-primary
+    docker push trussworks/circleci-docker-primary:packer
+    docker push trussworks/circleci-docker-primary:tf13
+    docker push trussworks/circleci-docker-primary:rotator
+    docker push trussworks/circleci-docker-primary:nuker
+fi

@@ -16,45 +16,51 @@ The following tools are installed:
 - [go-bindata](https://github.com/kevinburke/go-bindata)
 - [pre-commit](http://pre-commit.com/)
 - [ShellCheck](https://www.shellcheck.net/)
-- [Terraform](https://www.terraform.io/) 0.12.x (see `tf11` below for 0.11.x)
+- [Terraform](https://www.terraform.io/) 0.12.x (see  `tf13` for 0.13.x)
 - [terraform-docs](https://github.com/segmentio/terraform-docs)
 - [Yarn](https://yarnpkg.com/)
 - [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
 - [hub](https://hub.github.com/)
 - [goreleaser](https://goreleaser.com/)
 
-For `tf11` tagged images, these additional tools are installed:
+For more details and exact versions, see [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile)
 
-- [Terraform](https://www.terraform.io/) 0.11.x (overwrites Terraform 0.11.x)
+## Tool Specific Images
 
-For `packer` tagged images, these additional tools are installed:
+### tf13
+
+Next major release of Terraform that is currently in beta. This is meant for early testing and will eventually be merged back into the main image. See [tf13/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/tf13/Dockerfile) for exact versions.
+
+- [Terraform](https://www.terraform.io/) 0.13.x (overwrites Terraform 0.12.x)
+
+### packer
+
+For building AMIs via packer and configuring them with Ansible. See [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile) for exact versions.
 
 - [Ansible](https://pypi.org/project/ansible/)
 - [ansible-lint](https://pypi.org/project/ansible-lint/)
 - [Packer](https://packer.io/)
 
-For `nuker` tagged images, these additional tools are installed:
+### nuker
+
+For being able to nuke AWS resources in an entire account. See - [nuker/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/nuker/Dockerfile) for exact versions.
 
 - [AWS-Nuke](https://github.com/rebuy-de/aws-nuke)
 
-For `rotator` tagged images, these additional tools are installed:
+### rotator
+
+For rotating AWS Access Keys tied to robot IAM users (e.g., CircleCI) automatically. See [rotator/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/rotator/Dockerfile) for exact versions.
 
 - [Rotator](https://github.com/chanzuckerberg/rotator)
 
-For more details and exact versions, see
-
-- [Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/Dockerfile)
-- [packer/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/packer/Dockerfile)
-- [nuker/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/nuker/Dockerfile)
-- [rotator/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/rotator/Dockerfile)
+## Tagging
 
 For the latest stable images:
 
 - `trussworks/circleci-docker-primary:latest`
-- `trussworks/circleci-docker-primary:tf11`
-- `trussworks/circleci-docker-primary:tf12`
 - `trussworks/circleci-docker-primary:packer`
 - `trussworks/circleci-docker-primary:nuker`
 - `trussworks/circleci-docker-primary:rotator`
+- `trussworks/circleci-docker-primary:tf13`
 
 For static tags, use tags including the git hash. You can find the hashes in this repo, from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
