@@ -20,4 +20,5 @@ if [[ $CIRCLE_BRANCH = master ]]; then
     docker push trussworks/circleci-docker-primary:tf13
     docker push trussworks/circleci-docker-primary:rotator
     docker push trussworks/circleci-docker-primary:nuker
+    docker push trussworks/circleci-docker-primary:ghr
 fi
