@@ -55,7 +55,7 @@ For rotating AWS Access Keys tied to robot IAM users (e.g., CircleCI) automatica
 
 ### ghr
 
-For being able to create a new GitHub release from the command line. See [ghr/Dockerfile]https://github.com/trussworks/circleci-docker-primary/blob/master/ghr/Dockerfile) for exact versions.
+For being able to create a new GitHub release from the command line. See [ghr/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/ghr/Dockerfile) for exact versions.
 
 - [ghr](https://github.com/tcnksm/ghr)
 
