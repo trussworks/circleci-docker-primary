@@ -31,3 +31,7 @@ popd
 pushd tf13
 docker build -t trussworks/circleci-docker-primary:tf13 .
 popd
+
+pushd ghr
+docker build -t trussworks/circleci-docker-primary:ghr .
+popd
