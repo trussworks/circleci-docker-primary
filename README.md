@@ -16,7 +16,7 @@ The following tools are installed:
 - [go-bindata](https://github.com/kevinburke/go-bindata)
 - [pre-commit](http://pre-commit.com/)
 - [ShellCheck](https://www.shellcheck.net/)
-- [Terraform](https://www.terraform.io/) 0.12.x (see  `tf13` for 0.13.x)
+- [Terraform](https://www.terraform.io/) 0.12.x (see `tf13` for 0.13.x)
 - [terraform-docs](https://github.com/segmentio/terraform-docs)
 - [Yarn](https://yarnpkg.com/)
 - [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
@@ -53,6 +53,12 @@ For rotating AWS Access Keys tied to robot IAM users (e.g., CircleCI) automatica
 
 - [Rotator](https://github.com/chanzuckerberg/rotator)
 
+### ghr
+
+For being able to create a new GitHub release from the command line. See [ghr/Dockerfile]https://github.com/trussworks/circleci-docker-primary/blob/master/ghr/Dockerfile) for exact versions.
+
+- [ghr](https://github.com/tcnksm/ghr)
+
 ## Tagging
 
 For the latest stable images:
@@ -62,5 +68,6 @@ For the latest stable images:
 - `trussworks/circleci-docker-primary:nuker`
 - `trussworks/circleci-docker-primary:rotator`
 - `trussworks/circleci-docker-primary:tf13`
+- `trussworks/circleci-docker-primary:ghr`
 
 For static tags, use tags including the git hash. You can find the hashes in this repo, from the [CircleCI builds page](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master), or from the [Docker Hub tags](https://hub.docker.com/r/trussworks/circleci-docker-primary/tags/) page.
