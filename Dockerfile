@@ -94,7 +94,7 @@ RUN set -ex && cd ~ \
 
 #install goreleaser
 ARG GORELEASER_VERSION=0.140.0
-ARG GORELEASER_SHA256SUM=82168269f05d2b00f4c30ce49bb6c10c01a3ebeff40328d2c1805c3e26da6fcc
+ARG GORELEASER_SHA256SUM=1aed6f2414483180c52fe4a0a2a8c34da3e0d623eb9a536a5877054e29f69aab
 RUN set -ex && cd ~ \
   && curl -sSLO https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz \
   && [ $(sha256sum goreleaser_Linux_x86_64.tar.gz | cut -f1 -d' ') = ${GORELEASER_SHA256SUM} ] \
