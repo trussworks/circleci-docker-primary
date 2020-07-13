@@ -93,8 +93,8 @@ RUN set -ex && cd ~ \
   && rm -r awscliv2.zip awscliv2.sig aws
 
 #install goreleaser
-ARG GORELEASER_VERSION=0.134.0
-ARG GORELEASER_SHA256SUM=b4c672caaeae7761104680ba8a9a20d9b08ed912cdaf095ceea3312bc9880815
+ARG GORELEASER_VERSION=0.140.0
+ARG GORELEASER_SHA256SUM=1aed6f2414483180c52fe4a0a2a8c34da3e0d623eb9a536a5877054e29f69aab
 RUN set -ex && cd ~ \
   && curl -sSLO https://github.com/goreleaser/goreleaser/releases/download/v${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz \
   && [ $(sha256sum goreleaser_Linux_x86_64.tar.gz | cut -f1 -d' ') = ${GORELEASER_SHA256SUM} ] \
