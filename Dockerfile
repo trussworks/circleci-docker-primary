@@ -21,8 +21,8 @@ RUN set -ex && cd ~ \
   && rm -vrf shellcheck-v${SHELLCHECK_VERSION} shellcheck-v${SHELLCHECK_VERSION}.linux.x86_64.tar.xz
 
 # install go
-ARG GO_VERSION=1.15
-ARG GO_SHA256SUM=2d75848ac606061efe52a8068d0e647b35ce487a15bb52272c427df485193602
+ARG GO_VERSION=1.15.5
+ARG GO_SHA256SUM=9a58494e8da722c3aef248c9227b0e9c528c7318309827780f16220998180a0d
 RUN set -ex && cd ~ \
   && curl -sSLO https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz \
   && [ $(sha256sum go${GO_VERSION}.linux-amd64.tar.gz | cut -f1 -d' ') = ${GO_SHA256SUM} ] \
