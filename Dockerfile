@@ -40,8 +40,8 @@ RUN set -ex && cd ~ \
   && mv go-bindata-linux-amd64 /usr/local/bin/go-bindata
 
 # install terraform
-ARG TERRAFORM_VERSION=0.12.29
-ARG TERRAFORM_SHA256SUM=872245d9c6302b24dc0d98a1e010aef1e4ef60865a2d1f60102c8ad03e9d5a1d
+ARG TERRAFORM_VERSION=0.14.6
+ARG TERRAFORM_SHA256SUM=63a5a45edde435fa3f278c86ce96346ee7f6b204ea949734f26f963b7dbc1074
 RUN set -ex && cd ~ \
   && curl -sSLO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
   && [ $(sha256sum terraform_${TERRAFORM_VERSION}_linux_amd64.zip | cut -f1 -d ' ') = ${TERRAFORM_SHA256SUM} ] \
@@ -49,13 +49,23 @@ RUN set -ex && cd ~ \
   && rm -vf terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 # install terraform-docs
-ARG TERRAFORM_DOCS_VERSION=0.9.1
-ARG TERRAFORM_DOCS_SHA256SUM=ceb4e7f291d43a5f7672f7ca9543075554bacd02cf850e6402e74f18fbf28f7e
+ARG TERRAFORM_DOCS_VERSION=0.11.0
+ARG TERRAFORM_DOCS_SHA256SUM=8e00ae5b2e3094127d6d52f51527534994e5a4173759bb351d90c91c81823d65
 RUN set -ex && cd ~ \
-  && curl -sSLO https://github.com/segmentio/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 \
+  && curl -sSLO https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 \
   && [ $(sha256sum terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 | cut -f1 -d' ') = ${TERRAFORM_DOCS_SHA256SUM} ] \
   && chmod 755 terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 \
   && mv terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 /usr/local/bin/terraform-docs
+
+# install tfsec
+ARG TFSEC_VERSION=0.38.3
+# note: tfsec does not provide the SHASUM with the release, so this is obtained manually.
+ARG TFSEC_SHA256SUM=8444cf04c44bc4aa68201e7b5d68a943ba3eff7e8f42fbee9f28961204a7ebd8
+RUN set -ex && cd ~ \
+  && curl -sSLO https://github.com/tfsec/tfsec/releases/download/v${TFSEC_VERSION}/tfsec-linux-amd64 \
+  && [ $(sha256sum tfsec-linux-amd64 | cut -f1 -d' ') = ${TFSEC_SHA256SUM} ] \
+  && chmod 755 tfsec-linux-amd64 \
+  && mv tfsec-linux-amd64 /usr/local/bin/tfsec
 
 # install circleci cli
 ARG CIRCLECI_CLI_VERSION=0.1.6893
@@ -80,7 +90,7 @@ RUN set -ex && cd ~ \
 
 # install awscliv2, disable default pager (less)
 ENV AWS_PAGER=""
-ARG AWSCLI_VERSION=2.0.16
+ARG AWSCLI_VERSION=2.1.26
 COPY sigs/awscliv2_pgp.key /tmp/awscliv2_pgp.key
 RUN gpg --import /tmp/awscliv2_pgp.key
 RUN set -ex && cd ~ \

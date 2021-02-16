@@ -16,7 +16,7 @@ The following tools are installed:
 - [go-bindata](https://github.com/kevinburke/go-bindata)
 - [pre-commit](http://pre-commit.com/)
 - [ShellCheck](https://www.shellcheck.net/)
-- [Terraform](https://www.terraform.io/) 0.12.x (see `tf13` for 0.13.x)
+- [Terraform](https://www.terraform.io/) 0.14.x (see `tf13` for 0.13.x)
 - [terraform-docs](https://github.com/segmentio/terraform-docs)
 - [Yarn](https://yarnpkg.com/)
 - [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/)
@@ -29,7 +29,9 @@ For more details and exact versions, see [Dockerfile](https://github.com/trusswo
 
 ### tf13
 
-Next major release of Terraform that is currently in beta. This is meant for early testing and will eventually be merged back into the main image. See [tf13/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/tf13/Dockerfile) for exact versions.
+Previous release of Terraform; this is kept for users who have not yet
+upgraded to Terraform 0.14. This will be phased out when 0.15 reaches
+full release. See [tf13/Dockerfile](https://github.com/trussworks/circleci-docker-primary/blob/master/tf13/Dockerfile) for exact versions.
 
 - [Terraform](https://www.terraform.io/) 0.13.x (overwrites Terraform 0.12.x)
 
