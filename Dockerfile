@@ -1,5 +1,5 @@
 # CircleCI primary docker image to run within
-FROM circleci/python:3.9.4-buster
+FROM circleci/python:3.9.5-buster
 # Base image uses "circleci", to avoid using `sudo` run as root user
 USER root
 
