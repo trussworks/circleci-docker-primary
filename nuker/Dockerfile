@@ -4,8 +4,8 @@ FROM trussworks/circleci-docker-primary:base
 USER root
 
 # install aws-nuke
-ARG AWSNUKE_VERSION=2.14.0
-ARG AWSNUKE_SHA256SUM=c0b72869dc80c1555179603722906f5021f4cb2063e39c85713c37582172a383
+ARG AWSNUKE_VERSION=2.15.0
+ARG AWSNUKE_SHA256SUM=2b6cf01c978d1581341e9612107a217826ae9bce0529f41a839fedae47f9e8d2
 RUN set -ex && cd ~ \
   && curl -sSLO https://github.com/rebuy-de/aws-nuke/releases/download/v${AWSNUKE_VERSION}/aws-nuke-v${AWSNUKE_VERSION}-linux-amd64.tar.gz \
   && [ $(sha256sum aws-nuke-v${AWSNUKE_VERSION}-linux-amd64.tar.gz | cut -f1 -d' ') = ${AWSNUKE_SHA256SUM} ] \
