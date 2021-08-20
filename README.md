@@ -1,4 +1,6 @@
-# Truss CircleCI Primary Docker Image
+# DEPRECATED Truss CircleCI Primary Docker Image
+
+**This repository has been deprecated in favor of [https://github.com/trussworks/docker-circleci](docker-circleci).**
 
 [![Build status](https://img.shields.io/circleci/project/github/trussworks/circleci-docker-primary/master.svg)](https://circleci.com/gh/trussworks/circleci-docker-primary/tree/master)
 
